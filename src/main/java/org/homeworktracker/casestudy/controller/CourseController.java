@@ -35,6 +35,7 @@ public class CourseController {
         course.setCourse(form.getCourse());
         courseDao.save(course);
         log.info("In create course with incoming args");
+        response.addObject("successMessage", "Course added successfully");
         return response;
     }
 

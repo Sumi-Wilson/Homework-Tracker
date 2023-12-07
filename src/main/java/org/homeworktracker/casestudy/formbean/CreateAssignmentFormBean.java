@@ -9,11 +9,9 @@ import java.util.Date;
 @Getter
 public class CreateAssignmentFormBean {
     private String course;
-    private Date currentDate;
-    private Integer daysLeft;
     private String  status;
     private String task;
-    private Date dueDate;
+    private String dueDate;
 
 
 }

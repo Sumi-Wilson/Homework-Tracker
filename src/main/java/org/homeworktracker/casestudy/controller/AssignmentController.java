@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 @Slf4j
 public class AssignmentController {
@@ -21,16 +25,18 @@ public class AssignmentController {
         return response;
     }
     @GetMapping("/student/assignmentAdd")
-    public ModelAndView studentAssignmentAdd(CreateAssignmentFormBean form){
+    public ModelAndView studentAssignmentAdd(CreateAssignmentFormBean form) throws ParseException {
         ModelAndView response = new ModelAndView("student/studentview");
         log.info("course: " + form.getCourse());
         Assignment assignment = new Assignment();
         assignment.setCourse(form.getCourse());
         assignment.setHomework(form.getTask());
-        assignment.setDaysLeft(form.getDaysLeft());
-        assignment.setStatus(form.getStatus());
-        assignment.setDueDate(form.getDueDate());
-        assignment.setCreatedDate(form.getCurrentDate());
+        assignment.setStatus ("Not Started");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date dueDate = formatter.parse(form.getDueDate());
+        assignment.setDueDate(dueDate);
+        assignment.setCreatedDate(new Date());
+        assignmentDao.save(assignment);
         return response;
 
     }

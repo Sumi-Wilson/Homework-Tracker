@@ -16,7 +16,7 @@ public class Assignment {
     @Column(name = "id")
     private Integer id;
 
-    //@Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     private Date createdDate;
 
@@ -26,13 +26,12 @@ public class Assignment {
     @Column(name = "homework")
     private String homework;
 
-    //@Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "due_date")
     private Date dueDate;
 
     @Column(name = "status")
     private String status;
 
-    @Column(name = "days_left")
-    private int daysLeft;
+
 }
