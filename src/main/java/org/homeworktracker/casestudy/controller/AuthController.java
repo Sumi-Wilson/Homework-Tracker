@@ -20,9 +20,9 @@ public class AuthController {
 
     @GetMapping("/auth/login")
     public ModelAndView login() {
-        ModelAndView respnse = new ModelAndView();
-        respnse.setViewName("auth/login");
-        return respnse;
+        ModelAndView response = new ModelAndView();
+        response.setViewName("auth/login");
+        return response;
     }
 
     @GetMapping("/auth/register")
