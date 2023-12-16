@@ -13,8 +13,6 @@
 
 <section class="bg-light1 pt-5 pb-5">
     <div class="container">
-        <form action="/customer/search">
-        </form>
 
         <table class="table table-hover">
              <tr>
