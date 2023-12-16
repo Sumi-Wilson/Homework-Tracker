@@ -16,7 +16,7 @@ public interface UserDAO extends JpaRepository<User, Long> {
 //    List<User> findByFirstNameOrLastName(String firstName,String lastName);
 
     @Query("SELECT u FROM User u WHERE u.userType = 'Parent' AND (LOWER(u.firstName) LIKE LOWER(:firstName) OR LOWER(u.lastName) LIKE LOWER(:lastName))")
-    List<User> findByFirstNameOrLastName( String firstName, String lastName);
+    List<User> findByFirstNameAndLastName( String firstName, String lastName);
 
     public User findById(Integer parentId);
 
