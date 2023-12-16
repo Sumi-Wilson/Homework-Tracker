@@ -110,12 +110,13 @@ public class StudentController {
     @GetMapping("student/addParent")
     public ModelAndView addParent(@RequestParam Integer parentId) {
         ModelAndView response = new ModelAndView("student/search");
+
         User parent = userDao.findById(parentId);
         User student = authenticatedUserService.loadCurrentUser();
-
         ParentStudent parentStudent = new ParentStudent();
         parentStudent.setStudent(student);
         parentStudent.setParent(parent);
+
         parentStudentDao.save(parentStudent);
 
         return response;
