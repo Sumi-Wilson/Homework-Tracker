@@ -25,13 +25,10 @@ padding-right: 10px;s
 
 .row {
 display: flex;
-
 }
 
 .column {
 align-items: center;
-  
-
 }
 
 .sign-in-link {
@@ -139,9 +136,15 @@ text-align: center;
 justify-content: center;
 }
 
+.tick{
+border-radius: 50px;
+vertical-align: middle;
+height: 25px;
+width: 25px;
+}
+
 footer{
 background-color: #056EB9;
-height: 100px;
 color: white;
 display: flex;
 align-items: center;

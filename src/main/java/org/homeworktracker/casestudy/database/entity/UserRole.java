@@ -14,10 +14,16 @@ public class UserRole {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+  @Column(name = "user_id")
+  private Integer userId;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @Column(name = "role_name")
     private String roleName;
+
+
 
 }

@@ -2,7 +2,7 @@
 <jsp:include page="../include/header.jsp"/>
 
 <section>
-    <div class="bg-light2 pt-5 pb-5">
+    <div class="bg-light2 pt-2 pb-1">
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="m-0">Login</h1>
@@ -11,7 +11,7 @@
     </div>
 </section>
 
-<section class="pt-5 pb-5">
+<section class="pt-2 pb-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -36,6 +36,7 @@
     </div>
 </section>
 <jsp:include page="../include/footer.jsp"/>
+
 
 
 

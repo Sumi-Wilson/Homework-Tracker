@@ -2,12 +2,13 @@ package org.homeworktracker.casestudy.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.access.AccessDeniedException;
+
 
 @Slf4j
 @Controller
@@ -20,6 +21,7 @@ public class ErrorController {
 
         return "error/404";
     }
+
     @ExceptionHandler(AccessDeniedException.class)
     public ModelAndView accessDenied(HttpServletRequest request, Exception ex) {
         ModelAndView response = new ModelAndView("error/404");
@@ -29,3 +31,4 @@ public class ErrorController {
         return response;
     }
 }
+

@@ -16,6 +16,13 @@ public class SlashController {
         ModelAndView response = new ModelAndView("about");
         return response;
     }
+
+    @GetMapping("/homepage")
+    public ModelAndView homePage() {
+        ModelAndView response = new ModelAndView("homepage");
+        return response;
+    }
+
 }
 
 

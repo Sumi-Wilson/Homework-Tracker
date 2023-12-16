@@ -3,7 +3,7 @@
 <jsp:include page="../include/header.jsp"/>
 
 <section>
-    <div class="bg-light2 pt-5 pb-5">
+    <div class="bg-light2 pt-2 pb-2">
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="m-0">User Registration</h1>
@@ -12,13 +12,52 @@
     </div>
 </section>
 
-
-<section class="pt-5 pb-5">
+<section class="pt-2 pb-2">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
                 <!-- the action attribute on the form tag is the URL that the form will submit to when then user clicks the submit button -->
                 <form method="get" action="/auth/registerSubmit">
+
+                    <div class="mt-3">
+                        <label for="userType" class="form-label">User Type</label>
+                        <select class="form-control" id="userType" name="userType" value="${form.userType}" required>
+                        <option value="">Are you a student or parent?</option>
+                        <option value="Student">Student</option>
+                        <option value="Parent">Parent</option>
+                        </select>
+                    </div>
+                    <c:if test="${errors.hasFieldErrors('userType')}">
+                        <div style="color:red">
+                            <c:forEach items="${errors.getFieldErrors('userType')}" var="error">
+                                ${error.defaultMessage}<br>
+                            </c:forEach>
+                        </div>
+                    </c:if>
+
+                    <div class="mt-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" value="${form.firstName}">
+                    </div>
+                    <c:if test="${errors.hasFieldErrors('firstName')}">
+                        <div style="color:red">
+                            <c:forEach items="${errors.getFieldErrors('firstName')}" var="error">
+                                ${error.defaultMessage}<br>
+                            </c:forEach>
+                        </div>
+                    </c:if>
+
+                    <div class="mt-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" value="${form.lastName}">
+                    </div>
+                    <c:if test="${errors.hasFieldErrors('lastName')}">
+                        <div style="color:red">
+                            <c:forEach items="${errors.getFieldErrors('lastName')}" var="error">
+                                ${error.defaultMessage}<br>
+                            </c:forEach>
+                        </div>
+                    </c:if>
 
                     <div class="mt-3">
                         <label for="email" class="form-label">Email</label>
@@ -32,7 +71,6 @@
                         </div>
                     </c:if>
 
-
                     <div class="mt-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="text" class="form-control" id="password" name="password" value="${form.password}">
@@ -45,7 +83,6 @@
                         </div>
                     </c:if>
 
-
                     <div class="mt-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="text" class="form-control" id="confirmPassword" name="confirmPassword" value="${form.confirmPassword}">
@@ -57,7 +94,6 @@
                             </c:forEach>
                         </div>
                     </c:if>
-
 
                     <button type="submit" class="btn btn-primary mt-4">Submit</button>
                 </form>

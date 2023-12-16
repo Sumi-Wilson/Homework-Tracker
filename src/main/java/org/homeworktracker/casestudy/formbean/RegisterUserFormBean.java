@@ -10,6 +10,12 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 @Setter
 public class RegisterUserFormBean {
+    @NotEmpty(message = "First Name cannot be empty")
+    private String firstName;
+
+    @NotEmpty(message = "Last Name cannot be empty")
+    private String lastName;
+
     @Email(message = "Email must be valid email address")
     @NotEmpty(message = "Email cannot be empty")
     private String email;
@@ -18,7 +24,16 @@ public class RegisterUserFormBean {
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "Password must contain at least one lowercase letter, one uppercase letter, and one digit")
     private String password;
 
-    @NotEmpty(message = " Confirm Password cannot be empty")
+   // @NotEmpty(message = " Confirm Password cannot be empty")
     private String confirmPassword;
+
+
+    private String std1Email;
+
+    private String std2Email;
+
+    private String userType;
+
+
 
 }

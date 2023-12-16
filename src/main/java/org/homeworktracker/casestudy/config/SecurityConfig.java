@@ -50,6 +50,7 @@ public class SecurityConfig {
     }
     @Bean(name = "passwordEncoder")
     public PasswordEncoder getPasswordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
     @Bean

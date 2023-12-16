@@ -72,7 +72,7 @@ form {
 <div class="row">
 	<div style="width: 100%; height=75vh; padding-top: 15px; border-radius: 5px;">
 
-<form method="get" action = "/parent/signupSubmit">
+<form method="get" action = "/user/signupSubmit">
 <h1 style="color:#056EB9; text-align:center;">User Registration</h1><br>
 
 <label for="userType">User Type:</label>
@@ -98,10 +98,10 @@ form {
 <input placeholder="Confirm Password" type="password" id="cpassword" name="cpassword" required>
 <br><br>
 <!-- <label for="std1email">Student1 Email:</label> -->
-<!-- <input placeholder="Student1 Email id" type="email" id="std1email" name="std1Email" required> -->
+ <input placeholder="Student1 Email id" type="email" id="std1email" name="std1Email" required>
 <br><br>
 <!-- <label for="std2email">Student2 Email:</label> -->
-<!-- <input placeholder="Student2 Email id" type="email" id="std2email" name="std2Email"> -->
+<input placeholder="Student2 Email id" type="email" id="std2email" name="std2Email">
 
 <br><br>
 <center><button type="submit"><b>Sign Up</b></button></center>
