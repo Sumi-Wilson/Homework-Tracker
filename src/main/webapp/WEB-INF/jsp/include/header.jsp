@@ -14,7 +14,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid" style="border: 1px solid white; background: white; border-bottom: 5px solid #056EB9;">
+    <div class="container-fluid" style="background: white; border-bottom: 5px solid #056EB9;">
         <a class="navbar-brand" href="/"><img src="../pub/images/logo.png"></a>
 
 
