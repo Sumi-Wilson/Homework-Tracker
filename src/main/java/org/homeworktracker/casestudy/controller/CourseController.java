@@ -48,8 +48,12 @@ public class CourseController {
     public ModelAndView deleteCourse(@RequestParam(required = false) String courseName) {
         ModelAndView response = new ModelAndView("admin/deletecourse");
         log.debug("in the course delete method course: " + courseName);
+
         if (courseName != null) {
-            //response.addObject("course", courseName);
+            response.addObject("course", courseName);
+
+            response.addObject("successMessage", "Course deleted successfully");
+
             courseDao.deleteByCourse(courseName);
         }
 

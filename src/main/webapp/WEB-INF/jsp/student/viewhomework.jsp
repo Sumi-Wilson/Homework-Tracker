@@ -21,6 +21,7 @@
                 <td>Created Date</td>
                 <td>Due Date</td>
                 <td>Status</td>
+                <td>Edit</td>
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
@@ -30,6 +31,7 @@
                      <td>${assignment.createdDate}</td>
                      <td>${assignment.dueDate}</td>
                      <td>${assignment.status}</td>
+                     <td>Edit</td>
                  </tr>
               </c:forEach>
     </div>
