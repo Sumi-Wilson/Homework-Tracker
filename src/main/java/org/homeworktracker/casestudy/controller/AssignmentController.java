@@ -50,7 +50,7 @@ public class AssignmentController {
         assignmentDao.save(assignment);
 
         response.addObject("successMessage", "Course added successfully");
-        
+
         return response;
 
     }
