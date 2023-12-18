@@ -11,32 +11,33 @@
     </div>
 </section>
 
-<section class="pt-2 pb-2">
+<section class="pt-2 pb-2" style="height: 70vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
-                <form method="get" action = "/admin/courseAdd">
+               <c:if test="${not empty successMessage}">
+                   <div class="alert alert-success mt-3" role="alert">
+                           ${successMessage}
+                   </div>
+               </c:if>
+
+                <form method="get" action = "/admin/addcourseSubmit">
                     <div class="mt-3">
                             <label for="courseName" class="form-label">Course</label>
                             <input class="form-control" placeholder="Course Name" type="text" id="course" name="course" required>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4"><b>Add</b></button>
                 </form>
-            </div>
 
-
-<table>
-                <tr>
+                <table class="table table-hover">
+                  <tr>
                     <td>Id</td>
                     <td>Course</td>
-                </tr>
-                <c:forEach items="${parents}" var="parent">
-                    <tr>
-                        <td>${parent.id}----</td>
-                        <td>${parent.firstName}-------</td>
-                    </tr>
-                </c:forEach>
-            </table>
+                  </tr>
+
+                </table>
+
+            </div>
         </div>
     </div>
 </section>

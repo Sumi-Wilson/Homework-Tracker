@@ -10,6 +10,6 @@
 
 <body>
     <h1>About Page</h1>
-    <p>Here is a paragraph in About page.Adding more text to tAbout.</p>
+    <p>Here is a paragraph in About page.Adding more text to About.</p>
 </body>
 </html>

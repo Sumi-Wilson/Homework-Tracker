@@ -39,10 +39,13 @@
                         <a class="nav-link" href="/admin/index" style="color: white;">Admin</a>
                      </li>  -->
                      <li class="nav-item">
-                        <a class="nav-link" href="/admin/course" style="color: white;">Add Course</a>
+                        <a class="nav-link" href="/admin/addcourse" style="color: white;">Add Course</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="/admin/deletecourse" style="color: white;">Delete Course</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/notification/message" style="color: white;">Send Alert</a>
                      </li>
                 </sec:authorize>
 <!-- ===============PARENT======================== -->
@@ -82,7 +85,7 @@
 <!-- ============================================== -->
                  <sec:authorize access="isAuthenticated()">
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/logout" style="color: white;">Logout</a>
+                        <a class="nav-link" href="/auth/logout" style="color: white;">Sign Out</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" style="color: white;"><sec:authentication property="principal.username"/></a>

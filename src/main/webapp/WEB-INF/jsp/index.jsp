@@ -12,8 +12,8 @@
         -->
         <!-- ================================== -->
 <div class="row">
-	<div style="width: 58vw; height: 70vh; padding-left: 40px; padding-right: 5px; padding-top: 7px;">
-	<img src="../pub/images/caption.jpg" height=90px> <br><br>
+	<div style="width: 60vw; height: 70vh; padding-left: 55px; padding-top: 7px;">
+	<img src="../pub/images/caption.jpg" height="90"> <br><br>
 <h1 style="font-family: sans-serif; font-size:18px; color: #056EB9;">Track your Homework</h1><br>
 
 <p style="font-size: 14px;">
@@ -26,7 +26,7 @@
 </p>
 
 	</div>
-	<div style="width: 38vw; height: 70vh; text-align: right; padding-top: 100px;"><img src="../pub/images/tracker.jpg" height=280px width=400px></div>
+	<div style="width: 36vw; height: 70vh; text-align: right; padding-top: 100px;"><img src="../pub/images/tracker.jpg" height=280px width=400px></div>
 </div>
 <!-- ========================================= -->
 

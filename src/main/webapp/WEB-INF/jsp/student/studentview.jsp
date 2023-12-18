@@ -33,6 +33,11 @@ function calculateDaysLeft() {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
+            <c:if test="${not empty successMessage}">
+                 <div class="alert alert-success mt-3" role="alert">
+                         ${successMessage}
+                 </div>
+            </c:if>
 
 <form method="get" action="/student/assignmentAdd">
 <h1> Add Homework </h1><br>

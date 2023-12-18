@@ -5,13 +5,13 @@
     <div class="bg-light2 pt-2 pb-1">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="m-0">Login</h1>
+                <h2 class="m-0">Sign In</h2>
             </div>
         </div>
     </div>
 </section>
 
-<section class="pt-2 pb-5">
+<section class="pt-2 pb-5" style="height: 70vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -28,7 +28,7 @@
                         <input type="text" class="form-control" id="password" name="password">
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4">Sign In</button>
                 </form>
 
             </div>

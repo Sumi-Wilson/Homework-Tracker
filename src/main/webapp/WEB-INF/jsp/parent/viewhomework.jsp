@@ -22,29 +22,7 @@
     </div>
 
 
-<div style="width: 100px; height: 100px;">
-<canvas id="myChart" width="200" height="200"></canvas>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-
-<script>
-  const ctx = document.getElementById('myChart').getContext('2d');
-  const chart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Math', 'History'],
-      datasets: [{
-        data: [2, 3],
-        backgroundColor: ['#f00', '#00f'],
-      }]
-    },
-    options: {
-      responsive: true, // For dynamic resizing
-      // aspectRatio: 1 (Optional: maintains circular shape)
-    }
-  });
-</script>
-</div>
 
 </section>
 

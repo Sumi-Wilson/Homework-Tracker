@@ -1,4 +1,4 @@
-<footer>&copy; 2023 Homework Tracker, all rights reserved</footer>
+<footer>&copy; Homework Tracker 2023. All Rights Reserved.</footer>
 </body>
 </html>
 

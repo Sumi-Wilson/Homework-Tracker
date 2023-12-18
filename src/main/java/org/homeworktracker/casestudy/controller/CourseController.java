@@ -19,23 +19,27 @@ public class CourseController {
     @Autowired
     private CourseDAO courseDao;
 
-    @GetMapping("/admin/course")
-    public ModelAndView createCourse() {
-        ModelAndView response = new ModelAndView("admin/course");
+    @GetMapping("/admin/addcourse")
+    public ModelAndView addCourse() {
+        ModelAndView response = new ModelAndView("admin/addcourse");
         log.info("in create course with no arguments");
         return response;
     }
 
-    @GetMapping("/admin/courseAdd")
-    public ModelAndView addCourse(CreateCourseFormBean form) {
-        ModelAndView response = new ModelAndView("admin/course");
+    @GetMapping("/admin/addcourseSubmit")
+    public ModelAndView addCourseSubmit(CreateCourseFormBean form) {
+        ModelAndView response = new ModelAndView("admin/addcourse");
         log.info("Course: " + form.getCourse());
 
         Course course = new Course();
         course.setCourse(form.getCourse());
         courseDao.save(course);
-        log.info("In create course with incoming args");
+        log.info("In add course submit with incoming args");
+
+        response.addObject("course",course);
+
         response.addObject("successMessage", "Course added successfully");
+
         return response;
     }
 

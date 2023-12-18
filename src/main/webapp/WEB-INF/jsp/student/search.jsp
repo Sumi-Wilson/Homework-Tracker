@@ -2,16 +2,16 @@
 <jsp:include page="../include/header.jsp"/>
 
 <section>
-    <div class="bg-light2 pt-5 pb-5">
+    <div class="bg-light2 pt-3 pb-5">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="m-0">Parent Search</h1>
+                <h2 class="m-0">Search Parent</h2>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-light1 pt-5 pb-5">
+<section class="bg-light1 pt-1 pb-5" style="height: 60vh;">
     <div class="container">
         <form action="/student/search" method="get">
             <div class="row justify-content-center">
@@ -33,18 +33,18 @@
             </div>
 
             <div class="row justify-content-center pt-4">
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </form>
 
         <c:if test="${not empty user}">
-            <h1 class="pt-5">User Found ${user.size()}</h1>
+            <h5 class="pt-4">Parent Found ${user.size()}</h5>
 
-            <table class="table table-hover">
+            <table class="table table-hover" border="1">
                 <tr>
-                    <td>Id</td>
+
                     <td>First Name</td>
                     <td>Last Name</td>
                     <td>Email</td>
@@ -54,7 +54,7 @@
 
                 <c:forEach items="${user}" var="user">
                     <tr>
-                        <td>${user.id}</td>
+
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
