@@ -42,6 +42,7 @@
                      <td>${assignment.status}</td>
                  </tr>
               </c:forEach>
+
         </table>
     </div>
 </section>

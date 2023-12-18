@@ -36,7 +36,8 @@ public class CourseController {
         courseDao.save(course);
         log.info("In add course submit with incoming args");
 
-        response.addObject("course",course);
+        List<Course> courses = courseDao.findAll();
+        response.addObject("courses",courses);
 
         response.addObject("successMessage", "Course added successfully");
 

@@ -12,5 +12,6 @@ public interface CourseDAO extends JpaRepository<Course,Long> {
 //    @Modifying
 //    @Query("DELETE FROM Course c WHERE c.course = :course")
     void deleteByCourse(String courseName);
+    List<Course> findAll();
 }
 

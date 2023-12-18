@@ -22,18 +22,32 @@
                </c:if>
 
                 <form method="get" action = "/admin/addcourseSubmit">
+
                     <div class="mt-3">
                             <label for="courseName" class="form-label">Course</label>
                             <input class="form-control" placeholder="Course Name" type="text" id="course" name="course" required>
                     </div>
+                    <div>
                     <button type="submit" class="btn btn-primary mt-4"><b>Add</b></button>
+                    </div>
+
                 </form>
 
                 <table class="table table-hover">
+
                   <tr>
                     <td>Id</td>
                     <td>Course</td>
                   </tr>
+
+                  <c:forEach var="course" items="${courses}">
+
+                     <tr>
+                        <td>${course.id}</td>
+                        <td>${course.course}</td>
+                     </tr>
+
+                  </c:forEach>
 
                 </table>
 
