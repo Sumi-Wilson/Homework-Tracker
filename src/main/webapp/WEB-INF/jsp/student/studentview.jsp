@@ -50,14 +50,6 @@ function calculateDaysLeft() {
                             <c:forEach var="course" items="${courses}">
                                 <option value="${course.course}">${course.course}</option>
                             </c:forEach>
-
-                       <!--
-                              <option value="Math" >Mathematics</option>
-                              <option value="Physics" >Physics</option>
-                              <option value="Chemistry" >Chemistry</option>
-                       -->
-
-
                        </select>
                        <br><br>
                        <label for="homework" class="form-label">Homework:</label>
