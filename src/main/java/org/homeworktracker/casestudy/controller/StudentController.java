@@ -4,9 +4,11 @@ import io.micrometer.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 //import org.homeworktracker.casestudy.database.dao.StudentDAO;
 import org.homeworktracker.casestudy.database.dao.AssignmentDAO;
+import org.homeworktracker.casestudy.database.dao.CourseDAO;
 import org.homeworktracker.casestudy.database.dao.ParentStudentDAO;
 import org.homeworktracker.casestudy.database.dao.UserDAO;
 import org.homeworktracker.casestudy.database.entity.Assignment;
+import org.homeworktracker.casestudy.database.entity.Course;
 import org.homeworktracker.casestudy.database.entity.ParentStudent;
 import org.homeworktracker.casestudy.database.entity.User;
 import org.homeworktracker.casestudy.security.AuthenticatedUserService;
@@ -31,6 +33,9 @@ public class StudentController {
 
     @Autowired
     private AssignmentDAO assignmentDao;
+
+    @Autowired
+    private CourseDAO courseDao;
 
     @GetMapping ("/student/signup")
     public ModelAndView createStudent(){
@@ -65,9 +70,22 @@ public class StudentController {
     }
 
     @GetMapping ("/student/studentview")
-    public ModelAndView studentView(){
+    public ModelAndView studentView( @RequestParam(required = false) String success){
         ModelAndView response = new ModelAndView("student/studentview");
+
         log.info("In view homework with no args");
+
+        if (!org.springframework.util.StringUtils.isEmpty(success)) {
+            response.addObject("success", success);
+        }
+
+        List<Course> courses = courseDao.findAll();
+        response.addObject("courses",courses);
+
+        for(Course course : courses){
+            log.info("Course Name: " + course.getCourse());
+        }
+
         return response;
     }
 

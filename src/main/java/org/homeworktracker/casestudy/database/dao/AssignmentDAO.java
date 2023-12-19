@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface AssignmentDAO extends JpaRepository<Assignment,Long> {
     List<Assignment> findByStudentId(Integer studentId);
+    Assignment findById(Integer id);
+
 }
