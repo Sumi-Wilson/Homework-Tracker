@@ -28,7 +28,8 @@
                             <input class="form-control" placeholder="Course Name" type="text" id="course" name="course" required>
                     </div>
                     <div>
-                    <button type="submit" class="btn btn-primary mt-4"><b>Add</b></button>
+                    <button type="submit" class="btn btn-primary mt-4 pb-2"><b>Add Course</b></button>
+                    <br><br>
                     </div>
 
                 </form>
@@ -36,24 +37,19 @@
                 <table class="table table-hover">
 
                   <tr>
-                    <td>Id</td>
-                    <td>Course</td>
+
+                        <select id="selectedCourse">
+                            <c:forEach var="course" items="${courses}">
+                                <option value="${course.course}">${course.course}</option>
+                            </c:forEach>
+                        </select>
+
                   </tr>
-
-                  <c:forEach var="course" items="${courses}">
-
-                     <tr>
-                        <td>${course.id}</td>
-                        <td>${course.course}</td>
-                     </tr>
-
-                  </c:forEach>
-
                 </table>
-
             </div>
         </div>
     </div>
 </section>
+
 
 <jsp:include page="../include/footer.jsp"/>

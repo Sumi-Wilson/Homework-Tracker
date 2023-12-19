@@ -16,22 +16,24 @@
 
         <table class="table table-hover">
              <tr>
-                <td>Course</td>
-                <td>Homework</td>
-                <td>Created Date</td>
-                <td>Due Date</td>
-                <td>Status</td>
-                <td>Edit</td>
+                <th>Id</th>
+                <th>Course</th>
+                <th>Homework</th>
+                <th>Created Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Edit</th>
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
                  <tr>
+                     <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
                      <td>${assignment.createdDate}</td>
                      <td>${assignment.dueDate}</td>
                      <td>${assignment.status}</td>
-                     <td>Edit</td>
+                     <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
                  </tr>
               </c:forEach>
     </div>

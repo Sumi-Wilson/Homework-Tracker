@@ -26,6 +26,7 @@
 
         <table class="table table-hover">
              <tr>
+
                 <td>Course</td>
                 <td>Homework</td>
                 <td>Created Date</td>
@@ -35,6 +36,7 @@
 
               <c:forEach var="assignment" items="${assignments}">
                  <tr>
+
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
                      <td>${assignment.createdDate}</td>

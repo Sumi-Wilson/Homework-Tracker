@@ -63,9 +63,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/student/studentview" style="color: white;">Add Homework</a>
                     </li>
-                    <li class="nav-item">
-                                            <a class="nav-link" href="/student/edit" style="color: white;">Edit Homework</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/student/viewhomework" style="color: white;">View Homework</a>
                     </li>
