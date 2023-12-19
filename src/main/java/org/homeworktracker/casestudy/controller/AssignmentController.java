@@ -46,7 +46,7 @@ public class AssignmentController {
         Assignment assignment = new Assignment();
         assignment.setCourse(form.getCourse());
         assignment.setHomework(form.getHomework());
-        assignment.setStatus ("Not Started");
+        assignment.setStatus (form.getStatus());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dueDate = formatter.parse(form.getDueDate());
         assignment.setDueDate(dueDate);
@@ -85,6 +85,7 @@ public class AssignmentController {
             } else {
                 log.warn("Due date is null for Assignment with id: " + id);
             }
+            response.addObject("form", form);
         } else {
             log.warn("Homework with id: " + id + " was not found");
         }

@@ -21,9 +21,7 @@ function calculateDaysLeft() {
     window.onload = calculateDaysLeft;
 </script>
 
-<script>
-    let status = "Not Started";
-</script>
+
 <style>
 </style>
 
@@ -42,25 +40,33 @@ function calculateDaysLeft() {
 
          <form method="get" action="/student/assignmentAdd">
 
-
+            <input type="hidden" name ="id" value="${form.id}">
             <h1> Add Homework </h1><br>
                  <div class="mt-3">
+                        <label for="status" class="form-label">Status:</label>
+                        <select id="status" name="status">
+                              <option value="To Do">To Do</option>
+                              <option value="In-Progress">In-Progress</option>
+                              <option value="Done">Done</option>
+                        </select>
+                        <br><br>
+
                        <label for="course" class="form-label">Course:</label>
                        <select id="course" name="course">
                             <c:forEach var="course" items="${courses}">
-                                <option value="${course.course}">${course.course}</option>
+                                 <option value="${course.course}">${course.course}</option>
                             </c:forEach>
                        </select>
                        <br><br>
                        <label for="homework" class="form-label">Homework:</label>
-                       <input class="form-control" placeholder="Enter your homework" type="text" id="task" name="homework"  >
+                       <input class="form-control" placeholder="Enter your homework" type="text" id="task" name="homework" value="${form.homework}" >
                             <br><br>
                        <label for="dueDate" class="form-label">Due Date:</label><br>
-                       <input class="form-control" type="date" id="dueDate" name="dueDate" >
+                       <input class="form-control" type="date" id="dueDate" name="dueDate" value="${form.dueDate}" >
 
-                                <input type="hidden" id="currentDate" name="currentDate"><br>
+                                <!-- <input type="hidden" id="currentDate" name="currentDate"><br>
                                 <input type="hidden" id="daysLeft" name="daysLeft">
-                                <input type="hidden" id="status" name="status">
+                                <input type="hidden" id="status" name="status"> -->
                                 <center><button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button></center>
 <br><br>
                  </div>
