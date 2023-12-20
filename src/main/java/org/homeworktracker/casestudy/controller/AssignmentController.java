@@ -68,6 +68,9 @@ public class AssignmentController {
     public ModelAndView editAssignment(@PathVariable int id){
         ModelAndView response = new ModelAndView("student/studentview");
 
+        List<Course> courses = courseDao.findAll();
+        response.addObject("courses",courses);
+
         Assignment assignment = assignmentDao.findById(id);
 
         CreateAssignmentFormBean form = new CreateAssignmentFormBean();
@@ -77,6 +80,7 @@ public class AssignmentController {
             form.setId(assignment.getId());
             form.setCourse(assignment.getCourse());
             form.setHomework(assignment.getHomework());
+            form.setStatus(assignment.getStatus());
 
             if (assignment.getDueDate() != null) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

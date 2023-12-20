@@ -45,17 +45,18 @@ function calculateDaysLeft() {
                  <div class="mt-3">
                         <label for="status" class="form-label">Status:</label>
                         <select id="status" name="status">
-                              <option value="To Do">To Do</option>
-                              <option value="In-Progress">In-Progress</option>
-                              <option value="Done">Done</option>
+                             <option value="To Do" ${form.status eq 'To Do' ? 'selected' : ''}>To Do</option>
+                              <option value="In-Progress" ${form.status eq 'In-Progress' ? 'selected' : ''}>In-Progress</option>
+                               <option value="Done" ${form.status eq 'Done' ? 'selected' : ''}>Done</option>
                         </select>
                         <br><br>
 
                        <label for="course" class="form-label">Course:</label>
                        <select id="course" name="course">
                             <c:forEach var="course" items="${courses}">
-                                 <option value="${course.course}">${course.course}</option>
+                                <option value="${course.course}" ${course.course eq form.course ? 'selected' : ''}>${course.course}</option>
                             </c:forEach>
+
                        </select>
                        <br><br>
                        <label for="homework" class="form-label">Homework:</label>
