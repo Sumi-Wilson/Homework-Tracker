@@ -28,9 +28,9 @@ public class RegisterUserFormBean {
     private String confirmPassword;
 
 
-    private String std1Email;
-
-    private String std2Email;
+//    private String std1Email;
+//
+//    private String std2Email;
 
     private String userType;
 
