@@ -62,7 +62,13 @@ window.onload = calculateDaysLeft;
                      <td class="days-left">
                            <span></span>
                      </td>
-                     <td>${assignment.status}</td>
+                     <td>
+
+                     ${assignment.calculateStatus()}
+
+
+
+                     </td>
                      <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
                  </tr>
               </c:forEach>

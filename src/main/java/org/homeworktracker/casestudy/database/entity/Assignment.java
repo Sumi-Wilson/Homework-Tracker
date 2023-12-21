@@ -37,5 +37,16 @@ public class Assignment {
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
 
+    public String calculateStatus() {
+        Date currentDate = new Date();
+
+        if (dueDate != null && dueDate.before(currentDate)) {
+            return "Overdue";
+        } else {
+            return status;
+        }
+    }
+
+
 
 }
