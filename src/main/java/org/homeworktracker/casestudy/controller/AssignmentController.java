@@ -43,24 +43,39 @@ public class AssignmentController {
         log.info("course: " + form.getCourse());
         log.info("in assignment add with form bean argument ");
 
-        Assignment assignment = new Assignment();
-        assignment.setCourse(form.getCourse());
-        assignment.setHomework(form.getHomework());
-        assignment.setStatus (form.getStatus());
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date dueDate = formatter.parse(form.getDueDate());
-        assignment.setDueDate(dueDate);
-        assignment.setCreatedDate(new Date());
+        Assignment assignment = assignmentDao.findById(form.getId());
+        if(assignment != null){
+            assignment.setCourse(form.getCourse());
+            assignment.setHomework(form.getHomework());
+            assignment.setStatus(form.getStatus());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date dueDate = formatter.parse(form.getDueDate());
+            assignment.setDueDate(dueDate);
 
-        User student = authenticatedUserService.loadCurrentUser();
-        assignment.setStudent(student);
+            assignmentDao.save(assignment);
 
-        assignmentDao.save(assignment);
+            response.setViewName("redirect:/student/studentview?success=Homework updated successfully");
+        }else {
 
-        response.setViewName("redirect:/student/studentview" + "?success=Homework added successfully");
 
-       // response.addObject("successMessage", "Homework added successfully");
+            Assignment newAssignment = new Assignment();
+            assignment.setCourse(form.getCourse());
+            assignment.setHomework(form.getHomework());
+            assignment.setStatus(form.getStatus());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date dueDate = formatter.parse(form.getDueDate());
+            assignment.setDueDate(dueDate);
+            assignment.setCreatedDate(new Date());
 
+            User student = authenticatedUserService.loadCurrentUser();
+            assignment.setStudent(student);
+
+            assignmentDao.save(newAssignment);
+
+            response.setViewName("redirect:/student/studentview" + "?success=Homework added successfully");
+
+            // response.addObject("successMessage", "Homework added successfully");
+        }
         return response;
     }
 
