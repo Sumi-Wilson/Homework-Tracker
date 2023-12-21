@@ -31,14 +31,14 @@ public class UserService {
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
         user.setEmail(form.getEmail());
-        //user.setStudent1Email(form.getStd1Email());
-        //user.setStudent2Email(form.getStd2Email());
         user.setUserType(form.getUserType());
+
         user= userDao.save(user);
 
         UserRole userRole = new UserRole();
         userRole.setRoleName(form.getUserType());
         userRole.setUserId(user.getId());
+
         userRoleDao.save(userRole);
 
         return user;
