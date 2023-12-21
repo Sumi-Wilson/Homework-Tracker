@@ -120,15 +120,21 @@ public class StudentController {
         ModelAndView response = new ModelAndView("student/search");
 
         User parent = userDao.findById(parentId);
+
         User student = authenticatedUserService.loadCurrentUser();
-        ParentStudent parentStudent = new ParentStudent();
-        parentStudent.setStudent(student);
-        parentStudent.setParent(parent);
 
-        parentStudentDao.save(parentStudent);
+        if(parentStudentDao.existsByParentAndStudent(parent,student)){
+            response.addObject("error", "Parent is already linked to the student");
+        }else {
 
-        response.addObject("success", "Parent linked succesfully");
+            ParentStudent parentStudent = new ParentStudent();
+            parentStudent.setStudent(student);
+            parentStudent.setParent(parent);
 
+            parentStudentDao.save(parentStudent);
+
+            response.addObject("success", "Parent linked succesfully");
+        }
         return response;
 
     }
