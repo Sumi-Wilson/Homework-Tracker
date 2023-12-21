@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Slf4j
@@ -59,6 +62,7 @@ public class StudentController {
         log.info("Student Id: " + studentId );
 
         List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
+
         response.addObject("assignments",assignments);
 
         for(Assignment assignment : assignments){
@@ -73,7 +77,7 @@ public class StudentController {
     public ModelAndView studentView( @RequestParam(required = false) String success){
         ModelAndView response = new ModelAndView("student/studentview");
 
-        log.info("In view homework with no args");
+        log.info("In student view with  args");
 
         if (!org.springframework.util.StringUtils.isEmpty(success)) {
             response.addObject("success", success);

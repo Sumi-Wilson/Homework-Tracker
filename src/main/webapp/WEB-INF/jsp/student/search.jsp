@@ -26,7 +26,7 @@
                         ${error}
                     </div>
                 </c:if>
-                
+
                 <form action="/student/search" method="get">
                     <div class="row justify-content-center">
                         <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">

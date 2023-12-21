@@ -1,19 +1,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="../include/header.jsp"/>
 
 <script>
 function calculateDaysLeft() {
-      const dueDateInput = document.getElementById('dueDate');
-      const dueDate = new Date(dueDateInput.value);
-      const today = new Date();
+    const rows = document.querySelectorAll('tr[data-due-date]');
 
-      const millisecondsInDay = 1000 * 60 * 60 * 24;
-      const daysLeft = Math.round((dueDate.getTime() - today.getTime()) / millisecondsInDay);
+    rows.forEach(row => {
+        const dueDateValue = row.getAttribute('data-due-date');
+        const dueDate = new Date(dueDateValue);
+        const today = new Date();
 
-      const daysLeftElement = document.getElementById('daysLeft');
-      daysLeftElement.textContent = `Days left: ${daysLeft}`;
+        const millisecondsInDay = 1000 * 60 * 60 * 24;
+        const daysLeft = Math.round((dueDate.getTime() - today.getTime()) / millisecondsInDay);
 
-    window.onload = calculateDaysLeft;
+        const daysLeftElement = row.querySelector('.days-left span');
+        daysLeftElement.textContent = daysLeft;
+
+
+    });
+}
+
+window.onload = calculateDaysLeft;
 </script>
 
 <section>
@@ -42,13 +51,17 @@ function calculateDaysLeft() {
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
-                 <tr>
+                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}">
                      <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
-                     <td>${assignment.createdDate}</td>
+                     <td>
+                         <fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" />
+                     </td>
                      <td>${assignment.dueDate}</td>
-                     <td>${daysLeft}</td>
+                     <td class="days-left">
+                           <span></span>
+                     </td>
                      <td>${assignment.status}</td>
                      <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
                  </tr>
