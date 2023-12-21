@@ -127,6 +127,8 @@ public class StudentController {
 
         parentStudentDao.save(parentStudent);
 
+        response.addObject("success", "Parent linked succesfully");
+
         return response;
 
     }
