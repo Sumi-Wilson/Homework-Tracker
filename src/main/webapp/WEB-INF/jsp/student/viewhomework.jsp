@@ -64,7 +64,7 @@ window.onload = calculateDaysLeft;
                      </td>
                      <td>
 
-                     ${assignment.calculateStatus()}
+                     ${assignment.status}
 
 
 

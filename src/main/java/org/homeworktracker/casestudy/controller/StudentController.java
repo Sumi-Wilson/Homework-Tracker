@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Date;
 
 @Slf4j
 @Controller
@@ -53,21 +54,28 @@ public class StudentController {
         return response;
     }
     @GetMapping ("/student/viewhomework")
-    public ModelAndView viewHomework(){
+    public ModelAndView viewHomework() {
         ModelAndView response = new ModelAndView("student/viewhomework");
         log.info("In view homework with no args");
 
         User student = authenticatedUserService.loadCurrentUser();
         Integer studentId = student.getId();
-        log.info("Student Id: " + studentId );
+        log.info("Student Id: " + studentId);
 
         List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
 
-        response.addObject("assignments",assignments);
 
-        for(Assignment assignment : assignments){
+
+        for (Assignment assignment : assignments) {
             log.info("Id: " + assignment.getId() + " Course: " + assignment.getCourse());
+
+            // Check if the status is "To do" or "In Progress" and due date is in the past"
+            if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
+                    && assignment.getDueDate() != null && assignment.getDueDate().before(new Date())) {
+                assignment.setStatus("Overdue");
+            } 
         }
+        response.addObject("assignments", assignments);
         log.info("testing in view homework");
 
         return response;
