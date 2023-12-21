@@ -13,7 +13,7 @@ import java.util.List;
 public interface CourseDAO extends JpaRepository<Course,Long> {
     @Transactional
     @Modifying
-    @Query("DELETE FROM Course c WHERE c.course = :courseName")
+    @Query("DELETE FROM Course c WHERE LOWER(c.course) = LOWER(:courseName)")
     void deleteByCourse( String courseName);
     List<Course> findAll();
 }
