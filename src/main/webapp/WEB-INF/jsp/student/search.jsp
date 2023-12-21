@@ -11,34 +11,40 @@
     </div>
 </section>
 
-<section class="bg-light1 pt-1 pb-5" style="height: 60vh;">
+<section class="bg-light1 pt-1 pb-5" style="height: 70vh;">
     <div class="container">
-        <form action="/student/search" method="get">
-            <div class="row justify-content-center">
-                <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">
-                    <label for="firstName" class="form-label m-0 pt-1">First Name</label>
-                </div>
-                <div class="col-8 col-sm-9 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="firstNameSearch" name="firstName" placeholder="Search by first name" value="${firstName}"/>
-                </div>
-            </div>
-
-            <div class="row justify-content-center pt-3">
-                <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">
-                    <label for="lastName" class="form-label m-0 pt-1">Last Name</label>
-                </div>
-                <div class="col-8 col-sm-9 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="lastNameSearch" name="lastName" placeholder="Search by last name" value="${lastName}"/>
-                </div>
-            </div>
-
-            <div class="row justify-content-center pt-4">
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </div>
-        </form>
-
+         <div class="row justify-content-center">
+            <div class="col-6">
+                <c:if test="${not empty success}">
+                    <div class="alert alert-success mt-3" role="alert">
+                        ${success}
+                    </div>
+                </c:if>
+                <form action="/student/search" method="get">
+                    <div class="row justify-content-center">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">
+                            <label for="firstName" class="form-label m-0 pt-1">First Name</label>
+                        </div>
+                        <div class="col-8 col-sm-9 col-md-6 col-lg-4">
+                            <input type="text" class="form-control" id="firstNameSearch" name="firstName" placeholder="Search by first name" value="${firstName}"/>
+                        </div>
+                    </div>
+                        <div class="row justify-content-center pt-3">
+                            <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">
+                                <label for="lastName" class="form-label m-0 pt-1">Last Name</label>
+                            </div>
+                            <div class="col-8 col-sm-9 col-md-6 col-lg-4">
+                                <input type="text" class="form-control" id="lastNameSearch" name="lastName" placeholder="Search by last name" value="${lastName}"/>
+                            </div>
+                        </div>
+                            <div class="row justify-content-center pt-4">
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
         <c:if test="${not empty user}">
             <h5 class="pt-4">Parent Found ${user.size()}</h5>
 

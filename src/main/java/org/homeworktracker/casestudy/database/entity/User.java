@@ -31,18 +31,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    @Column(name = "student1_email")
-//    private String student1Email ;
-//
-//    @Column(name = "student2_email")
-//    private String student2Email;
-//
-//    @Column(name ="parent1_email")
-//    private String parent1Email;
-//
-//    @Column(name = "parent2_email")
-//    private String parent2Email;
-
     @Column(name = "user_type")
     private String userType;
 
