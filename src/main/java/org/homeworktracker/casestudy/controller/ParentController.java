@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -45,11 +46,18 @@ public class ParentController {
         }
 
         List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
-        response.addObject("assignments",assignments);
 
         for(Assignment assignment : assignments){
             log.info("course Name: " + assignment.getCourse());
+
+            // Check if the status is "To do" or "In Progress" and due date is in the past"
+            if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
+                    && assignment.getDueDate() != null && assignment.getDueDate().before(new Date())) {
+                assignment.setStatus("Overdue");
+            }
+
         }
+        response.addObject("assignments",assignments);
 
         return response;
     }
