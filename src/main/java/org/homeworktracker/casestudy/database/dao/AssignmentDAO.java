@@ -14,13 +14,22 @@ public interface AssignmentDAO extends JpaRepository<Assignment,Long> {
 
     // Native query to sort by course dueDate and status
     @Query(value = "SELECT * FROM Assignments a where a.student_id = :studentId ORDER BY a.course", nativeQuery = true)
-    List<Assignment> findByStudentIdOrderByDueCourse(Integer studentId);
+    List<Assignment> findByStudentIdOrderByDueCourseAsc(Integer studentId);
+
+    @Query(value = "SELECT * FROM Assignments a where a.student_id = :studentId ORDER BY a.course DESC", nativeQuery = true)
+    List<Assignment> findByStudentIdOrderByDueCourseDesc(Integer studentId);
 
     @Query(value = "SELECT * FROM Assignments a WHERE a.student_id = :studentId ORDER BY a.due_date", nativeQuery = true)
-    List<Assignment> findByStudentIdOrderByDueDate(Integer studentId);
+    List<Assignment> findByStudentIdOrderByDueDateAsc(Integer studentId);
+
+    @Query(value = "SELECT * FROM Assignments a WHERE a.student_id = :studentId ORDER BY a.due_date DESC", nativeQuery = true)
+    List<Assignment> findByStudentIdOrderByDueDateDesc(Integer studentId);
 
     @Query(value = "SELECT * FROM Assignments a WHERE a.student_id = :studentId ORDER BY a.status", nativeQuery = true)
     List<Assignment> findByStudentIdOrderByStatus(Integer studentId);
+
+    @Query(value = "SELECT * FROM Assignments a WHERE a.student_id = :studentId ORDER BY a.status DESC" , nativeQuery = true)
+    List<Assignment> findByStudentIdOrderByStatusDesc(Integer studentId);
 }
 
 

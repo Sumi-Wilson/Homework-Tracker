@@ -1,5 +1,6 @@
 package org.homeworktracker.casestudy.controller;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.homeworktracker.casestudy.database.dao.AssignmentDAO;
 import org.homeworktracker.casestudy.database.dao.ParentStudentDAO;
@@ -30,39 +31,56 @@ public class ParentController {
     private AssignmentDAO assignmentDao;
 
     @GetMapping("/parent/viewhomework")
-    public ModelAndView viewHomework(@RequestParam(required = false) Integer studentId,
-                                     @RequestParam(required = false) String sortBy){
+    public ModelAndView viewHomework(HttpSession session,
+                                     @RequestParam(required = false) Integer studentId,
+                                     @RequestParam(required = false) String sortBy) {
         ModelAndView response = new ModelAndView("parent/viewhomework");
         log.info("In parent view homework with  args studentId");
 
         User parent = authenticatedUserService.loadCurrentUser();
         Integer parentId = parent.getId();
-        log.info("Parent Id: " + parentId );
+        log.info("Parent Id: " + parentId);
 
         List<ParentStudent> parentStudents = parentStudentDao.findByParentId(parentId);
-        response.addObject("parentStudents",parentStudents);
+        response.addObject("parentStudents", parentStudents);
 
         // Pass the studentId to the view
         response.addObject("studentId", studentId);
 
-        for(ParentStudent parentStudent : parentStudents){
+        for (ParentStudent parentStudent : parentStudents) {
             log.info("studentId: " + parentStudent.getStudent().getId());
         }
 
         //List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
         List<Assignment> assignments;
 
+         //Toggle logic for sorting order
+        boolean sortOrderAsc = true;
+        if (session.getAttribute("sortOrderAsc") != null) {
+            sortOrderAsc = (boolean) session.getAttribute("sortOrderAsc");
+        }
 
-        // Check if sorting parameter is provided and fetch assignments accordingly
-        if("course".equals(sortBy)){
-            assignments = assignmentDao.findByStudentIdOrderByDueCourse(studentId);
+        // Fetch assignments based on the specified sorting criteria
+        if ("course".equals(sortBy)) {
+            // If sorting by course, apply ascending or descending order based on sortOrderAsc
+            assignments = sortOrderAsc ?
+                    assignmentDao.findByStudentIdOrderByDueCourseAsc(studentId) :
+                    assignmentDao.findByStudentIdOrderByDueCourseDesc(studentId);
         } else if ("dueDate".equals(sortBy)) {
-            assignments = assignmentDao.findByStudentIdOrderByDueDate(studentId);
+            // If sorting by due date, fetch assignments ordered by due date
+            assignments = sortOrderAsc ?
+                    assignmentDao.findByStudentIdOrderByDueDateAsc(studentId):
+                    assignmentDao.findByStudentIdOrderByDueDateDesc(studentId);
         } else if ("status".equals(sortBy)) {
-            assignments = assignmentDao.findByStudentIdOrderByStatus(studentId);
-        }else{
+            // If sorting by status, fetch assignments ordered by status
+            assignments = sortOrderAsc ?
+                    assignmentDao.findByStudentIdOrderByStatus(studentId):
+                    assignmentDao.findByStudentIdOrderByStatusDesc(studentId);
+        } else {
+            // If no specific sorting criteria is provided, fetch assignments without any specific order
             assignments = assignmentDao.findByStudentId(studentId);
         }
+
 
         for(Assignment assignment : assignments){
             log.info("course Name: " + assignment.getCourse());
@@ -74,7 +92,11 @@ public class ParentController {
             }
 
         }
+        sortOrderAsc = !sortOrderAsc;
+
         response.addObject("assignments",assignments);
+
+        session.setAttribute("sortOrderAsc", sortOrderAsc);
 
         return response;
     }
