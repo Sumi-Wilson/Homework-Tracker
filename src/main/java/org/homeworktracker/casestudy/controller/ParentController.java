@@ -30,7 +30,8 @@ public class ParentController {
     private AssignmentDAO assignmentDao;
 
     @GetMapping("/parent/viewhomework")
-    public ModelAndView viewHomework(@RequestParam(required = false) Integer studentId){
+    public ModelAndView viewHomework(@RequestParam(required = false) Integer studentId,
+                                     @RequestParam(required = false) String sortBy){
         ModelAndView response = new ModelAndView("parent/viewhomework");
         log.info("In parent view homework with  args studentId");
 
@@ -41,16 +42,32 @@ public class ParentController {
         List<ParentStudent> parentStudents = parentStudentDao.findByParentId(parentId);
         response.addObject("parentStudents",parentStudents);
 
+        // Pass the studentId to the view
+        response.addObject("studentId", studentId);
+
         for(ParentStudent parentStudent : parentStudents){
             log.info("studentId: " + parentStudent.getStudent().getId());
         }
 
-        List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
+        //List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
+        List<Assignment> assignments;
+
+
+        // Check if sorting parameter is provided and fetch assignments accordingly
+        if("course".equals(sortBy)){
+            assignments = assignmentDao.findByStudentIdOrderByDueCourse(studentId);
+        } else if ("dueDate".equals(sortBy)) {
+            assignments = assignmentDao.findByStudentIdOrderByDueDate(studentId);
+        } else if ("status".equals(sortBy)) {
+            assignments = assignmentDao.findByStudentIdOrderByStatus(studentId);
+        }else{
+            assignments = assignmentDao.findByStudentId(studentId);
+        }
 
         for(Assignment assignment : assignments){
             log.info("course Name: " + assignment.getCourse());
 
-            // Check if the status is "To do" or "In Progress" and due date is in the past"
+            // Check if the status is "To do" or "In Progress" and due date is in the past and update status to overdue"
             if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
                     && assignment.getDueDate() != null && assignment.getDueDate().before(new Date())) {
                 assignment.setStatus("Overdue");

@@ -51,12 +51,12 @@ window.onload = calculateDaysLeft;
         <table class="table table-hover">
              <tr>
 
-                <th>Course</th>
+                <th><a href="/parent/viewhomework?studentId=${studentId}&sortBy=course" style="text-decoration: none">Course</a></th>
                 <th>Homework</th>
                 <th>Created Date</th>
-                <th>Due Date</th>
+                <th><a href="/parent/viewhomework?studentId=${studentId}&sortBy=dueDate" style="text-decoration: none">Due Date</a></th>
                 <th>Days Left</th>
-                <th>Status</th>
+                <th><a href="/parent/viewhomework?studentId=${studentId}&sortBy=status" style="text-decoration: none">Status</a></th>
 
              </tr>
 
