@@ -40,7 +40,7 @@ public class AuthController {
     public ModelAndView createCustomerSubmit(@Valid RegisterUserFormBean form, BindingResult bindingResult, HttpSession session) {
         log.info("$$$$$ in auth registerSubmit $$$$$");
         if (bindingResult.hasErrors()) {
-            log.info("######################### In registerSubmit- has errors #########################");
+            log.info(" In registerSubmit- has errors ");
             ModelAndView response = new ModelAndView("auth/register");
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info("error: " + error.getDefaultMessage());
