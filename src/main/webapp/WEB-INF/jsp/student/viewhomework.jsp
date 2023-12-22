@@ -18,12 +18,11 @@ function calculateDaysLeft() {
         const daysLeftElement = row.querySelector('.days-left span');
         daysLeftElement.textContent = daysLeft;
 
-
     });
 }
-
 window.onload = calculateDaysLeft;
 </script>
+
 
 <section>
     <div class="bg-light2 pt-5 pb-5">
@@ -40,6 +39,7 @@ window.onload = calculateDaysLeft;
 
         <table class="table table-hover">
              <tr>
+
                 <th>Id</th>
                 <th>Course</th>
                 <th>Homework</th>
@@ -52,24 +52,16 @@ window.onload = calculateDaysLeft;
 
               <c:forEach var="assignment" items="${assignments}">
                  <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}">
+
                      <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
-                     <td>
-                         <fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" />
-                     </td>
+                     <td><fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" /></td>
                      <td>${assignment.dueDate}</td>
-                     <td class="days-left">
-                           <span></span>
-                     </td>
-                     <td>
-
-                     ${assignment.status}
-
-
-
-                     </td>
+                     <td class="days-left"><span></span></td>
+                     <td>${assignment.status}</td>
                      <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
+
                  </tr>
               </c:forEach>
     </div>

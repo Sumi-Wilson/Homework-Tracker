@@ -36,5 +36,5 @@ public class Assignment {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
-    
+
 }

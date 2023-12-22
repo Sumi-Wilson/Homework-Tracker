@@ -64,8 +64,6 @@ public class StudentController {
 
         List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
 
-
-
         for (Assignment assignment : assignments) {
             log.info("Id: " + assignment.getId() + " Course: " + assignment.getCourse());
 
@@ -73,7 +71,7 @@ public class StudentController {
             if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
                     && assignment.getDueDate() != null && assignment.getDueDate().before(new Date())) {
                 assignment.setStatus("Overdue");
-            } 
+            }
         }
         response.addObject("assignments", assignments);
         log.info("testing in view homework");
