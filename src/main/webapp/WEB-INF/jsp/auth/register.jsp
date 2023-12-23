@@ -19,7 +19,7 @@
                 <!-- the action attribute on the form tag is the URL that the form will submit to when then user clicks the submit button -->
                 <form method="get" action="/auth/registerSubmit">
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="userType" class="form-label">User Type</label>
                         <select class="form-control" id="userType" name="userType" value="${form.userType}" required>
                         <option value="">Are you a student or parent?</option>
@@ -35,9 +35,9 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" value="${form.firstName}">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" value="${form.firstName}">
                     </div>
                     <c:if test="${errors.hasFieldErrors('firstName')}">
                         <div style="color:red">
@@ -47,9 +47,9 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" value="${form.lastName}">
+                        <input type="text" class="form-control" placeholder="Last Name" id="lastName" name="lastName" value="${form.lastName}">
                     </div>
                     <c:if test="${errors.hasFieldErrors('lastName')}">
                         <div style="color:red">
@@ -59,9 +59,9 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="${form.email}">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email" aria-describedby="emailHelp" value="${form.email}">
                     </div>
                     <c:if test="${errors.hasFieldErrors('email')}">
                         <div style="color:red">
@@ -71,9 +71,9 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="password" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="password" name="password" value="${form.password}">
+                        <input type="text" class="form-control" placeholder="Password" id="password" name="password" value="${form.password}">
                     </div>
                     <c:if test="${errors.hasFieldErrors('password')}">
                         <div style="color:red">
@@ -83,9 +83,9 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-2">
+                    <div class="mt-1">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="text" class="form-control" id="confirmPassword" name="confirmPassword" value="${form.confirmPassword}">
+                        <input type="text" class="form-control" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" value="${form.confirmPassword}">
                     </div>
                     <c:if test="${errors.hasFieldErrors('confirmPassword')}">
                         <div style="color:red">
@@ -94,6 +94,14 @@
                             </c:forEach>
                         </div>
                     </c:if>
+
+                    <div class="mt-1">
+                        <label for="agree-terms">
+                        <input type="checkbox" id="agree-terms" name="agree-terms" required>
+                        By signing up, you agree to our <a href="/privacy-policy">Privacy Policy</a> and
+                        <a href="/terms-of-use"> Terms and Conditions</a>
+                        </label>
+                    </div>
 
                     <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
                 </form>

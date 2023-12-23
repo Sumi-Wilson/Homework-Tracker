@@ -5,7 +5,7 @@
     <div class="bg-light2 pt-2 pb-2" style="border: 1px solid white;">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="m-0">Delete Course</h1>
+                <h2 class="m-0">Delete Course</h2>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                             <input class="form-control" placeholder="Course Name" type="text" id="course" name="courseName" value="${course}" required>
                     </div>
                     <div>
-                    <button type="submit" class="btn btn-primary mt-4"><b>Delete</b></button>
+                    <button type="submit" class="btn btn-primary mt-4"><b>Delete Course</b></button>
                     </div>
                 </form>
             </div>

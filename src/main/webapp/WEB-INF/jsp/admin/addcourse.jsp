@@ -5,7 +5,7 @@
     <div class="bg-light2 pt-2 pb-2" style="border: 1px solid white;">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="m-0">Add Course</h1>
+                <h2 class="m-0">Add Course</h2>
             </div>
         </div>
     </div>
@@ -34,18 +34,7 @@
 
                 </form>
 
-                <table class="table table-hover">
 
-                  <tr>
-
-                        <select id="selectedCourse">
-                            <c:forEach var="course" items="${courses}">
-                                <option value="${course.course}">${course.course}</option>
-                            </c:forEach>
-                        </select>
-
-                  </tr>
-                </table>
             </div>
         </div>
     </div>

@@ -2,17 +2,17 @@
 <jsp:include page="../include/header.jsp"/>
 
     <section>
-        <div class="bg-light2 pt-5 pb-5">
+        <div class="bg-light2 pt-2 pb-2">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="m-0">Send System Alert Message to Users</h2>
+                    <h2 class="m-0">Send Alert</h2>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pt-5 pb-5">
-        <div class="container">
+    <section class="pt-2 pb-5">
+        <div class="container" style="height: 62vh;">
             <div class="row justify-content-center">
                 <div class="col-6">
                     <c:if test="${not empty successMessage}">
@@ -30,7 +30,7 @@
                              <label for="expiryDate" class="form-label">Expiry Date</label>
                              <input type="date" class="form-control" id="expirydate" name="expiryDate" value="${form.expiryDate}">
                        </div>
-                       <button type="submit" class="btn btn-primary mt-4">Send Message</button>
+                       <button type="submit" class="btn btn-primary mt-4">Send Alert</button>
                     </form>
                 </div>
             </div>

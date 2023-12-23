@@ -25,27 +25,27 @@ window.onload = calculateDaysLeft;
 </script>
 
 
-<div style="border: 5px solid white; text-align: right; ">
-    <table class="table table-hover">
-        <tr>Students: </tr>
+<div style="border: 1px solid orange; text-align: right;">
+    <table class="table table-hover" border="2px" bordercolor="green">
+        <tr border="2px" bordercolor="red" style="border: 1px solid orange;"><b>Students: </b></tr>
             <c:forEach var="parentStudent" items="${parentStudents}">
-        <tr><a href="/parent/viewhomework?studentId=${parentStudent.student.id}">${parentStudent.student.firstName}</a></tr> &nbsp;&nbsp;
+        <tr style="border: 1px solid orange;"><a href="/parent/viewhomework?studentId=${parentStudent.student.id}">${parentStudent.student.firstName}</a></tr>&nbsp;
             </c:forEach>
     </table>
 </div>
 
 <section>
-    <div class="bg-light2 pt-5 pb-5">
-        <div class="row" style="border: 5px solid white;">
-            <div class="col-12 text-center" style="border: 5px solid white;">
-                <h1 class="m-0">Parent View Homework</h1>
+    <div class="bg-light2 pt-0 pb-0">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="m-0">Homework</h2>
             </div>
         </div>
     </div>
 
 </section>
 
-<section class="bg-light1 pt-5 pb-5" style="height: 70vh;">
+<section class="bg-light1 pt-2 pb-0" style="height: 68vh; border: 1px solid blue;">
     <div class="container">
 
         <table class="table table-hover">
