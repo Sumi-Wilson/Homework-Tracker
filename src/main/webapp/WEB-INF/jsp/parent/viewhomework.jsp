@@ -68,7 +68,16 @@ window.onload = calculateDaysLeft;
                      <td><fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" /></td>
                      <td>${assignment.dueDate}</td>
                      <td class="days-left"> <span></span> </td>
-                     <td>${assignment.status}</td>
+                     <td style="color:
+                       <c:choose>
+                         <c:when test="${assignment.status eq 'To Do'}">orange</c:when>
+                         <c:when test="${assignment.status eq 'In-Progress'}">blue</c:when>
+                         <c:when test="${assignment.status eq 'Overdue'}">red</c:when>
+                         <c:when test="${assignment.status eq 'Done'}">green</c:when>
+                         <c:otherwise>transparent</c:otherwise>
+                       </c:choose>">
+                       ${assignment.status}
+                     </td>
 
                  </tr>
               </c:forEach>
