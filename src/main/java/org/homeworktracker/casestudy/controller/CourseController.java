@@ -31,19 +31,29 @@ public class CourseController {
     }
 
     @GetMapping("/admin/addcourseSubmit")
-    public ModelAndView addCourseSubmit(CreateCourseFormBean form) {
+    public ModelAndView addCourseSubmit(@Valid CreateCourseFormBean form,
+                                        BindingResult bindingResult) {
         ModelAndView response = new ModelAndView("admin/addcourse");
-        log.info("Course: " + form.getCourseName());
+        if(bindingResult.hasErrors()){
+            response.addObject("form",form);
+            response.addObject("errors",bindingResult);
+        }else if(form.getCourseName() != null){
+            log.info("Course Name is: " + form.getCourseName());
 
-        Course course = new Course();
-        course.setCourse(form.getCourseName());
-        courseDao.save(course);
-        log.info("In add course submit with incoming args");
+            if(courseDao.existsByCourseIgnoreCase(form.getCourseName())){
+                response.addObject("errorMessage","Course already added");
+            }else{
+                Course course = new Course();
 
-        List<Course> courses = courseDao.findAll();
-        response.addObject("courses",courses);
+                course.setCourse(form.getCourseName());
 
-        response.addObject("successMessage", "Course added successfully");
+                courseDao.save(course);
+
+                response.addObject("successMessage","Course added successfully");
+
+            }
+
+        }
 
         return response;
     }
