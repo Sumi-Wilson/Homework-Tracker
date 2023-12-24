@@ -36,9 +36,11 @@ window.onload = calculateDaysLeft;
 
 <section>
     <div class="bg-light2 pt-0 pb-0">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="m-0">Homework</h2>
+        <div class="row" style="border 1px solid black;">
+            <div class="col-12 text-center" style="display: flex;">
+                <div style="border 1px solid black;">Select</div>
+                <div style="border 1px solid black;"><h2 class="m-0">${parentStudents[0].student.firstName}'s Homework</h2></div>
+                <div style="border 1px solid black; text-align: right; align-items: right;">Radio</div>
             </div>
         </div>
     </div>
