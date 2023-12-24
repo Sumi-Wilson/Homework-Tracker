@@ -27,6 +27,7 @@ public class RegisterUserFormBean {
    // @NotEmpty(message = " Confirm Password cannot be empty")
     private String confirmPassword;
 
+    @NotEmpty(message = "Usertype cannot be empty")
     private String userType;
 
 

@@ -23,6 +23,9 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     public User createUser(RegisterUserFormBean form){
+
+
+        //save user
         User user= new User();
         user.setEmail(form.getEmail());
         String encoded = passwordEncoder.encode(form.getPassword());

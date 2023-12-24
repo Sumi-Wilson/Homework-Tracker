@@ -16,12 +16,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
+              <c:if test="${not empty errorMessage}">
+                     <div class="alert alert-danger mt-3" role="alert">
+                                ${errorMessage}
+                     </div>
+              </c:if>
                 <!-- the action attribute on the form tag is the URL that the form will submit to when then user clicks the submit button -->
                 <form method="get" action="/auth/registerSubmit">
 
                     <div class="mt-1">
                         <label for="userType" class="form-label">User Type</label>
-                        <select class="form-control" id="userType" name="userType" value="${form.userType}" required>
+                        <select class="form-control" id="userType" name="userType" value="${form.userType}" >
                         <option value="">Are you a student or parent?</option>
                         <option value="Student">Student</option>
                         <option value="Parent">Parent</option>

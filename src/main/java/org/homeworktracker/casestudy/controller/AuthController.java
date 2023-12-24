@@ -3,11 +3,15 @@ package org.homeworktracker.casestudy.controller;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.homeworktracker.casestudy.database.dao.UserDAO;
+import org.homeworktracker.casestudy.database.dao.UserRoleDAO;
 import org.homeworktracker.casestudy.database.entity.User;
+import org.homeworktracker.casestudy.database.entity.UserRole;
 import org.homeworktracker.casestudy.formbean.RegisterUserFormBean;
 import org.homeworktracker.casestudy.security.AuthenticatedUserService;
 import org.homeworktracker.casestudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -21,6 +25,13 @@ public class AuthController {
     private UserService userService;
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRoleDAO userRoleDao;
+    @Autowired
+    private UserDAO userDao;
+
 
     @GetMapping("/auth/login")
     public ModelAndView login() {
@@ -50,10 +61,40 @@ public class AuthController {
             return response;
         }
         log.info("  in Create customer no error found");
-        User u = userService.createUser(form);
-        authenticatedUserService.authenticateNewUser(session,u.getEmail(),form.getPassword());
+
+        //Check if email exists
+        if (userDao.countByEmail(form.getEmail()) > 0) {
+            ModelAndView response = new ModelAndView("auth/register");
+            response.addObject("errorMessage", "Email already exists");
+            return response;
+        }
+
+       //Save User
+        User user= new User();
+        user.setEmail(form.getEmail());
+        String encoded = passwordEncoder.encode(form.getPassword());
+        log.debug("Encoded password: " + encoded);
+        user.setPassword(encoded);
+        user.setFirstName(form.getFirstName());
+        user.setLastName(form.getLastName());
+        user.setEmail(form.getEmail());
+        user.setUserType(form.getUserType());
+
+        user = userDao.save(user);
+
+        //save user role
+        UserRole userRole = new UserRole();
+        userRole.setRoleName(form.getUserType());
+        userRole.setUserId(user.getId());
+
+        userRoleDao.save(userRole);
+
+        // Authenticate user
+        authenticatedUserService.authenticateNewUser(session,user.getEmail(),form.getPassword());
+
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/");
+
         log.info("In create customer with incoming args");
         return response;
 
