@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CourseDAO extends JpaRepository<Course,Long> {
+
+    boolean existsByCourseIgnoreCase(String courseName);
     @Transactional
     @Modifying
     @Query("DELETE FROM Course c WHERE LOWER(c.course) = LOWER(:courseName)")

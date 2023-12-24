@@ -25,7 +25,7 @@
 
                     <div class="mt-3">
                             <label for="courseName" class="form-label">Course</label>
-                            <input class="form-control" placeholder="Course Name" type="text" id="course" name="course" required>
+                            <input class="form-control" placeholder="Course Name" type="text" id="course" name="courseName" required>
                     </div>
                     <div>
                     <button type="submit" class="btn btn-primary mt-4 pb-2"><b>Add Course</b></button>

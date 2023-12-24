@@ -9,7 +9,7 @@ import lombok.Setter;
 public class CreateCourseFormBean {
 
     @NotEmpty(message = "Course cannot be empty")
-    private String course;
+    private String courseName;
 
 
 }

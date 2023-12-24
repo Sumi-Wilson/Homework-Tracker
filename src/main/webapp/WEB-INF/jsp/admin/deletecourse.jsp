@@ -16,18 +16,32 @@
 
         <div class="row justify-content-center">
             <div class="col-6">
+
                <c:if test="${not empty successMessage}">
                    <div class="alert alert-success mt-3" role="alert">
                            ${successMessage}
                    </div>
                </c:if>
 
-                <form method="get" action = "/admin/deletecourse">
+                <c:if test="${not empty errorMessage}">
+                     <div class="alert alert-danger mt-3" role="alert">
+                          ${errorMessage}
+                     </div>
+                </c:if>
+
+                <form method="get" action = "/admin/deletecourseSubmit">
 
                     <div class="mt-3">
                             <label for="courseName" class="form-label">Course</label>
-                            <input class="form-control" placeholder="Course Name" type="text" id="course" name="courseName" value="${course}" required>
+                            <input class="form-control" placeholder="Course Name" type="text" id="course" name="courseName" value="${course}" r>
                     </div>
+                     <c:if test="${errors.hasFieldErrors('courseName')}">
+                          <div style="color:red">
+                              <c:forEach items="${errors.getFieldErrors('courseName')}" var="error">
+                                     ${error.defaultMessage}<br>
+                              </c:forEach>
+                          </div>
+                     </c:if>
                     <div>
                     <button type="submit" class="btn btn-primary mt-4"><b>Delete Course</b></button>
                     </div>
