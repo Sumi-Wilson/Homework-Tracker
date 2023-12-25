@@ -1,5 +1,6 @@
 package org.homeworktracker.casestudy.controller;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.homeworktracker.casestudy.database.dao.AssignmentDAO;
 import org.homeworktracker.casestudy.database.dao.CourseDAO;
@@ -10,6 +11,8 @@ import org.homeworktracker.casestudy.formbean.CreateAssignmentFormBean;
 import org.homeworktracker.casestudy.security.AuthenticatedUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,14 +40,28 @@ public class AssignmentController {
         return response;
     }
     @GetMapping("/student/assignmentAdd")
-    public ModelAndView studentAssignmentAdd(CreateAssignmentFormBean form) throws ParseException {
+    public ModelAndView studentAssignmentAdd(@Valid CreateAssignmentFormBean form,BindingResult bindingResult) throws ParseException {
         ModelAndView response = new ModelAndView("student/studentview");
-
-        log.info("course: " + form.getCourse());
         log.info("in assignment add with form bean argument ");
 
+        //Checking validations
+        if (bindingResult.hasErrors()) {
+            log.info(" In assignmentAdd has errors ");
+
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.info("error: " + error.getDefaultMessage());
+            }
+            response.addObject("form", form);
+            response.addObject("errors", bindingResult);
+            return response;
+        }
+
+
         Assignment assignment = assignmentDao.findById(form.getId());
-        if(assignment != null){
+        //Edit
+        if (assignment != null) {
+
+
             assignment.setCourse(form.getCourse());
             assignment.setHomework(form.getHomework());
             assignment.setStatus(form.getStatus());
@@ -55,20 +72,20 @@ public class AssignmentController {
             assignmentDao.save(assignment);
 
             response.setViewName("redirect:/student/studentview?success=Homework updated successfully");
-        }else {
-
+            //Save a new assignment
+        } else {
 
             Assignment newAssignment = new Assignment();
-            assignment.setCourse(form.getCourse());
-            assignment.setHomework(form.getHomework());
-            assignment.setStatus(form.getStatus());
+            newAssignment.setCourse(form.getCourse());
+            newAssignment.setHomework(form.getHomework());
+            newAssignment.setStatus(form.getStatus());
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date dueDate = formatter.parse(form.getDueDate());
-            assignment.setDueDate(dueDate);
-            assignment.setCreatedDate(new Date());
+            newAssignment.setDueDate(dueDate);
+            newAssignment.setCreatedDate(new Date());
 
             User student = authenticatedUserService.loadCurrentUser();
-            assignment.setStudent(student);
+            newAssignment.setStudent(student);
 
             assignmentDao.save(newAssignment);
 
@@ -77,6 +94,7 @@ public class AssignmentController {
             // response.addObject("successMessage", "Homework added successfully");
         }
         return response;
+
     }
 
     @GetMapping("/student/assignmentEdit/{id}")

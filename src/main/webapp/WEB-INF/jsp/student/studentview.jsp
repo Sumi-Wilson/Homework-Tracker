@@ -1,34 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../include/header.jsp"/>
-<script>
-    const currentDate = new Date();
-    const currentDateElement = document.getElementById('currentDate');
-    currentDateElement.value = currentDate.toISOString();
-</script>
-
-<script>
-function calculateDaysLeft() {
-      const dueDateInput = document.getElementById('dueDate');
-      const dueDate = new Date(dueDateInput.value);
-      const today = new Date();
-
-      const millisecondsInDay = 1000 * 60 * 60 * 24;
-      const daysLeft = Math.round((dueDate.getTime() - today.getTime()) / millisecondsInDay);
-
-      const daysLeftElement = document.getElementById('daysLeft');
-      daysLeftElement.textContent = `Days left: ${daysLeft}`;
-
-    window.onload = calculateDaysLeft;
-</script>
 
 
-<style>
-</style>
-
-<p id="currentDate"></p> <br> <p id="daysLeft"></p> <br> <p id="status"</p>
 <!-- ================================================= -->
 
-<section class="pt-2 pb-2">
+<section>
+    <div class="bg-light2 pt-2 pb-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="m-0">Add Homework</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-0 pb-1" style="height: 71vh;">
    <div class="container">
       <div class="row justify-content-center">
          <div class="col-6">
@@ -38,38 +24,65 @@ function calculateDaysLeft() {
                 </div>
             </c:if>
 
-         <form method="get" action="/student/assignmentAdd">
 
+         <form method="get" action="/student/assignmentAdd">
             <input type="hidden" name ="id" value="${form.id}">
-            <h1> Add Homework </h1><br>
+
                  <div class="mt-3">
-                        <label for="status" class="form-label">Status:</label>
-                        <select id="status" name="status">
+                        <label for="status" class="form-label">Status</label>
+                        <select  class="form-select"id="status" name="status">
                              <option value="To Do" ${form.status eq 'To Do' ? 'selected' : ''}>To Do</option>
                               <option value="In-Progress" ${form.status eq 'In-Progress' ? 'selected' : ''}>In-Progress</option>
                                <option value="Done" ${form.status eq 'Done' ? 'selected' : ''}>Done</option>
                         </select>
-                        <br><br>
+                        <c:if test="${errors.hasFieldErrors('status')}">
+                           <div style="color:red">
+                                <c:forEach items="${errors.getFieldErrors('status')}" var="error">
+                                        ${error.defaultMessage}<br>
+                                </c:forEach>
+                           </div>
+                        </c:if>
+                        <br>
 
-                       <label for="course" class="form-label">Course:</label>
-                       <select id="course" name="course">
+                       <label for="course" class="form-label">Course</label>
+                       <select class="form-select"id="course" name="course">
                             <c:forEach var="course" items="${courses}">
                                 <option value="${course.course}" ${course.course eq form.course ? 'selected' : ''}>${course.course}</option>
                             </c:forEach>
-
                        </select>
-                       <br><br>
-                       <label for="homework" class="form-label">Homework:</label>
-                       <input class="form-control" placeholder="Enter your homework" type="text" id="task" name="homework" value="${form.homework}" >
-                            <br><br>
-                       <label for="dueDate" class="form-label">Due Date:</label><br>
-                       <input class="form-control" type="date" id="dueDate" name="dueDate" value="${form.dueDate}" >
+                       <c:if test="${errors.hasFieldErrors('course')}">
+                             <div style="color:red">
+                                 <c:forEach items="${errors.getFieldErrors('course')}" var="error">
+                                          ${error.defaultMessage}<br>
+                                 </c:forEach>
+                             </div>
+                       </c:if>
+                       <br>
+                       <label for="homework" class="form-label">Homework</label>
+                       <input class="form-control" placeholder="Enter your homework" type="text" id="task" name="homework" value="${form.homework}" required>
 
-                                <!-- <input type="hidden" id="currentDate" name="currentDate"><br>
-                                <input type="hidden" id="daysLeft" name="daysLeft">
-                                <input type="hidden" id="status" name="status"> -->
-                                <center><button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button></center>
-<br><br>
+                       <c:if test="${errors.hasFieldErrors('homework')}">
+                            <div style="color:red">
+                                <c:forEach items="${errors.getFieldErrors('homework')}" var="error">
+                                    ${error.defaultMessage}<br>
+                                </c:forEach>
+                            </div>
+                       </c:if>
+                       <br>
+
+                       <label for="dueDate" class="form-label">Due Date</label><br>
+                       <input class="form-control" type="date" id="dueDate" name="dueDate" value="${form.dueDate}" required >
+                        <c:if test="${errors.hasFieldErrors('dueDate')}">
+                            <div style="color:red">
+                                <c:forEach items="${errors.getFieldErrors('dueDate')}" var="error">
+                                    ${error.defaultMessage}<br>
+                                </c:forEach>
+                            </div>
+                       </c:if>
+
+                       <center><button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button></center>
+                       <br>
+
                  </div>
          </form>
       </div>
