@@ -26,7 +26,7 @@
 
                     <div class="mt-1">
                         <label for="userType" class="form-label">User Type</label>
-                        <select class="form-control" id="userType" name="userType" value="${form.userType}" >
+                        <select class="form-select" id="userType" name="userType" value="${form.userType}" >
                         <option value="">Are you a student or parent?</option>
                         <option value="Student">Student</option>
                         <option value="Parent">Parent</option>

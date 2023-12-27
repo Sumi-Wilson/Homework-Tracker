@@ -81,7 +81,7 @@
                         <a class="nav-link" href="/auth/logout" style="color: white;">Sign Out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="color: white;"><sec:authentication property="principal.username"/></a>
+                        <a class="nav-link" style="color: white;"><sec:authentication property="principal.username"/></a>
                     </li>
                  </sec:authorize>
             </ul>

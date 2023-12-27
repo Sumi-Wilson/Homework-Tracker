@@ -24,30 +24,24 @@ function calculateDaysLeft() {
 window.onload = calculateDaysLeft;
 </script>
 
-
-<div style="border: 1px solid orange; text-align: right;">
-    <table class="table table-hover" border="2px" bordercolor="green">
-        <tr border="2px" bordercolor="red" style="border: 1px solid orange;"><b>Students: </b></tr>
-            <c:forEach var="parentStudent" items="${parentStudents}">
-        <tr style="border: 1px solid orange;"><a href="/parent/viewhomework?studentId=${parentStudent.student.id}">${parentStudent.student.firstName}</a></tr>&nbsp;
-            </c:forEach>
-    </table>
-</div>
-
 <section>
-    <div class="bg-light2 pt-0 pb-0">
-        <div class="row" style="border 1px solid black;">
-            <div class="col-12 text-center" style="display: flex;">
-                <div style="border 1px solid black;">Select</div>
-                <div style="border 1px solid black;"><h2 class="m-0">${parentStudents[0].student.firstName}'s Homework</h2></div>
-                <div style="border 1px solid black; text-align: right; align-items: right;">Radio</div>
-            </div>
-        </div>
+    <div style="text-align: right; margin-right: 15px;">
+        <b>Students: </b>
+        <c:forEach var="parentStudent" items="${parentStudents}">
+            <a href="/parent/viewhomework?studentId=${parentStudent.student.id}">${parentStudent.student.firstName}</a></tr>&nbsp;
+        </c:forEach>
     </div>
-
 </section>
 
-<section class="bg-light1 pt-2 pb-0" style="height: 68vh; border: 1px solid blue;">
+<section>
+<div class="bg-light2 pt-0 pb-0" style="display: flex; justify-content: space-around;">
+    <div></div>
+    <div><h2 class="m-0">View Homework</h2></div>
+    <div></div>
+</div>
+</section>
+
+<section class="bg-light1 pt-4 pb-0" style="height: 70vh;">
     <div class="container">
 
         <table class="table table-hover">

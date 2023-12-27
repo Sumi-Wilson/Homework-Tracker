@@ -56,7 +56,7 @@ public class StudentController {
     @GetMapping ("/student/viewhomework")
     public ModelAndView viewHomework() {
         ModelAndView response = new ModelAndView("student/viewhomework");
-        log.info("In view homework with no args");
+        log.info("In student view homework with no args");
 
         User student = authenticatedUserService.loadCurrentUser();
         Integer studentId = student.getId();
@@ -65,7 +65,7 @@ public class StudentController {
         List<Assignment> assignments = assignmentDao.findByStudentId(studentId);
 
         for (Assignment assignment : assignments) {
-            log.info("Id: " + assignment.getId() + " Course: " + assignment.getCourse());
+           //log.info("Id: " + assignment.getId() + " Course: " + assignment.getCourse());
 
             // Check if the status is "To do" or "In Progress" and due date is in the past"
             if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
@@ -92,9 +92,9 @@ public class StudentController {
         List<Course> courses = courseDao.findAll();
         response.addObject("courses",courses);
 
-        for(Course course : courses){
-            log.info("Course Name: " + course.getCourse());
-        }
+//        for(Course course : courses){
+//            log.info("Course Name: " + course.getCourse());
+//        }
 
         return response;
     }

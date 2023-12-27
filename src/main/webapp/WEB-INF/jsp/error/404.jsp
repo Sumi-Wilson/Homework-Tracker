@@ -1,6 +1,6 @@
 <jsp:include page="../include/header.jsp"/>
 
-<section>
+<section class="bg-light2 pt-5" style="height: 79vh;">
     <div class="bg-light2 pt-5 pb-5">
         <div class="row">
             <div class="col-12 text-center">

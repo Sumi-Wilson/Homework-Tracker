@@ -25,26 +25,42 @@ window.onload = calculateDaysLeft;
 
 
 <section>
-    <div class="bg-light2 pt-5 pb-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="m-0">View Homework</h1>
-            </div>
+    <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; display: flex; border: 1px solid #056EB9; border-radius: 15px; width: 98%; margin-left: 10px; justify-content: space-around;">
+        <div>
+            <form action="student/viewhomework.jsp" method="post">
+
+                <label for="startDate"><b>Start Date </b></label>
+                <input type="date" id="startDate" name="startDate" required>
+
+                <label for="endDate"><b>End Date </b></label>
+                <input type="date" id="endDate" name="endDate" required>&nbsp;
+
+                <button type="submit" class="btn btn-primary btn-sm">View</button>
+            </form>
+        </div>
+
+        <div><h2 class="m-0">View Homework</h2></div>
+        <div>
+            <form action="student/viewhomework.jsp" method="post">
+                <input type="radio" name="status" value="todo" id="todo-radio"> To Do
+                <input type="radio" name="status" value="inprogress" id="inprogress-radio"> In Progress
+                <input type="radio" name="status" value="done" id="done-radio"> Done
+            </form>
         </div>
     </div>
 </section>
 
-<section class="bg-light1 pt-5 pb-5">
+<section class="bg-light1 pt-3 pb-2" style="height: 71vh;">
     <div class="container">
 
-        <table class="table table-hover">
-             <tr>
+        <table class="table table-hover" border="1">
+             <tr style="background-color: #F2FAFF;">
 
                 <th>Id</th>
-                <th>Course</th>
+                <th><a href="/student/viewhomework?studentId=${studentId}&sortBy=course" style="text-decoration: none">Course</a></th>
                 <th>Homework</th>
                 <th>Created Date</th>
-                <th>Due Date</th>
+                <th><a href="/student/viewhomework?studentId=${studentId}&sortBy=dueDate" style="text-decoration: none">Due Date</a></th>
                 <th>Days Left</th>
                 <th>Status</th>
                 <th>Edit</th>
@@ -59,11 +75,25 @@ window.onload = calculateDaysLeft;
                      <td><fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" /></td>
                      <td>${assignment.dueDate}</td>
                      <td class="days-left"><span></span></td>
-                     <td>${assignment.status}</td>
+                     <td style="color:
+                           <c:choose>
+                              <c:when test="${assignment.status eq 'To Do'}">orange</c:when>
+                              <c:when test="${assignment.status eq 'In-Progress'}">blue</c:when>
+                              <c:when test="${assignment.status eq 'Overdue'}">red</c:when>
+                              <c:when test="${assignment.status eq 'Done'}">green</c:when>
+                              <c:otherwise>transparent</c:otherwise>
+                           </c:choose>">
+                           ${assignment.status}
+                     </td>
+
+
                      <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
 
                  </tr>
               </c:forEach>
+        </table>
     </div>
+
 </section>
+
 <jsp:include page="../include/footer.jsp"/>

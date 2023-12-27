@@ -5,7 +5,7 @@
 <!-- ================================================= -->
 
 <section>
-    <div class="bg-light2 pt-2 pb-2">
+    <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="m-0">Add Homework</h2>
@@ -14,7 +14,7 @@
     </div>
 </section>
 
-<section class="pt-0 pb-1" style="height: 71vh;">
+<section class="pt-3 pb-1" style="height: 71vh;">
    <div class="container">
       <div class="row justify-content-center">
          <div class="col-6">
@@ -25,7 +25,8 @@
             </c:if>
 
 
-         <form method="get" action="/student/assignmentAdd">
+         <form method="get" action="/student/assignmentAdd" style="padding-left:15px; padding-right: 15px; border: 1px solid #ccc; border-radius: 10px; background-color: #F2FAFF;">
+
             <input type="hidden" name ="id" value="${form.id}">
 
                  <div class="mt-3">
@@ -80,7 +81,12 @@
                             </div>
                        </c:if>
 
-                       <center><button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button></center>
+                       <center>
+                            <!-- <button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button> -->
+                            <button type="submit" class="btn btn-primary mt-4">
+                            <b>Add Homework</b>
+                            </button>
+                       </center>
                        <br>
 
                  </div>

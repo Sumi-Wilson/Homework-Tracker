@@ -11,7 +11,7 @@
     </div>
 </section>
 
-<section class="pt-2 pb-5" style="height: 72vh;">
+<section class="pt-2 pb-5" style="height: 71vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -25,12 +25,12 @@
 
                     <div class="mt-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" placeholder="Username" id="username" name="username">
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="username" required>
                     </div>
 
                     <div class="mt-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="text" class="form-control" placeholder="Password" id="password" name="password">
+                        <input type="text" class="form-control" placeholder="Password" id="password" name="password" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-4">Sign In</button>
