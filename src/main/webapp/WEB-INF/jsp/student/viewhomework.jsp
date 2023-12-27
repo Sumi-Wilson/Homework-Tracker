@@ -20,7 +20,31 @@ function calculateDaysLeft() {
 
     });
 }
-window.onload = calculateDaysLeft;
+function filterAssignments(status) {
+    const rows = document.querySelectorAll('tr[data-status]');
+
+    rows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status');
+        if (status === 'all' || rowStatus === status) {
+            row.style.display = 'table-row';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+window.onload = function(){
+   calculateDaysLeft();
+
+       const radioButtons = document.querySelectorAll('input[name="status"]');
+       radioButtons.forEach(button => {
+           button.addEventListener('change', function() {
+               const selectedStatus = this.value;
+               filterAssignments(selectedStatus);
+           });
+       });
+   };
+
 </script>
 
 
@@ -41,11 +65,11 @@ window.onload = calculateDaysLeft;
 
         <div><h2 class="m-0">View Homework</h2></div>
         <div>
-            <form action="student/viewhomework.jsp" method="post">
-                <input type="radio" name="status" value="todo" id="todo-radio"> To Do
-                <input type="radio" name="status" value="inprogress" id="inprogress-radio"> In Progress
-                <input type="radio" name="status" value="done" id="done-radio"> Done
-            </form>
+                <input type="radio" name="status" value="all" id="all-radio" checked> All
+                <input type="radio" name="status" value="To Do" id="todo-radio"> To Do
+                <input type="radio" name="status" value="In-Progress" id="inprogress-radio"> In Progress
+                <input type="radio" name="status" value="Overdue" id="done-radio"> Overdue
+                <input type="radio" name="status" value="Done" id="done-radio"> Done
         </div>
     </div>
 </section>
@@ -57,17 +81,17 @@ window.onload = calculateDaysLeft;
              <tr style="background-color: #F2FAFF;">
 
                 <th>Id</th>
-                <th><a href="/student/viewhomework?studentId=${studentId}&sortBy=course" style="text-decoration: none">Course</a></th>
+                <th>Course</th>
                 <th>Homework</th>
                 <th>Created Date</th>
-                <th><a href="/student/viewhomework?studentId=${studentId}&sortBy=dueDate" style="text-decoration: none">Due Date</a></th>
+                <th>Due Date</th>
                 <th>Days Left</th>
                 <th>Status</th>
                 <th>Edit</th>
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
-                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}">
+                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" data-status="${assignment.status}">
 
                      <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
