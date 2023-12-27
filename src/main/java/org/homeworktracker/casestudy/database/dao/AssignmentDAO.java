@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -30,6 +31,8 @@ public interface AssignmentDAO extends JpaRepository<Assignment,Long> {
 
     @Query(value = "SELECT * FROM Assignments a WHERE a.student_id = :studentId ORDER BY a.status DESC" , nativeQuery = true)
     List<Assignment> findByStudentIdOrderByStatusDesc(Integer studentId);
+
+    List<Assignment> findByStudentIdAndCreatedDateBetween(Integer studentId, Date startDate, Date endDate);
 }
 
 

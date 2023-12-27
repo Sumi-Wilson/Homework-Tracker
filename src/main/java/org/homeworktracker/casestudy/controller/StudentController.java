@@ -13,6 +13,7 @@ import org.homeworktracker.casestudy.database.entity.ParentStudent;
 import org.homeworktracker.casestudy.database.entity.User;
 import org.homeworktracker.casestudy.security.AuthenticatedUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +55,9 @@ public class StudentController {
         return response;
     }
     @GetMapping ("/student/viewhomework")
-    public ModelAndView viewHomework() {
+    public ModelAndView viewHomework(
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         ModelAndView response = new ModelAndView("student/viewhomework");
         log.info("In student view homework with no args");
 
@@ -67,7 +70,15 @@ public class StudentController {
         for (Assignment assignment : assignments) {
            //log.info("Id: " + assignment.getId() + " Course: " + assignment.getCourse());
 
-            // Check if the status is "To do" or "In Progress" and due date is in the past"
+            // checking both start date and ened date provided and get homework with in that dates
+            if (startDate != null && endDate != null){
+                assignments = assignmentDao.findByStudentIdAndCreatedDateBetween(studentId, startDate, endDate);
+
+            }else{
+                assignments = assignmentDao.findByStudentId(studentId);
+            }
+
+                // Check if the status is "To do" or "In Progress" and due date is in the past"
             if (("To Do".equals(assignment.getStatus()) || "In-Progress".equals(assignment.getStatus()))
                     && assignment.getDueDate() != null && assignment.getDueDate().before(new Date())) {
                 assignment.setStatus("Overdue");

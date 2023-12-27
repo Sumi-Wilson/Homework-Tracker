@@ -51,7 +51,7 @@ window.onload = function(){
 <section>
     <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; display: flex; border: 1px solid #056EB9; border-radius: 15px; width: 98%; margin-left: 10px; justify-content: space-around;">
         <div>
-            <form action="student/viewhomework.jsp" method="post">
+            <form action="/student/viewhomework" method="get">
 
                 <label for="startDate"><b>Start Date </b></label>
                 <input type="date" id="startDate" name="startDate" required>
