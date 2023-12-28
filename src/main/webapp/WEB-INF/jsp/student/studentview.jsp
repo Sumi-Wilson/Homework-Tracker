@@ -8,7 +8,7 @@
     <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="m-0">Add Homework</h2>
+                <h2 class="m-0">${empty form.id ? 'Add' : 'Edit'} Homework</h2>
             </div>
         </div>
     </div>
@@ -82,9 +82,8 @@
                        </c:if>
 
                        <center>
-                            <!-- <button type="submit" class="btn btn-primary mt-4"><b>Add Homework</b></button> -->
                             <button type="submit" class="btn btn-primary mt-4">
-                            <b>Add Homework</b>
+                               <b>${empty form.id ? 'Add' : 'Edit'} Homework</b>
                             </button>
                        </center>
                        <br>
