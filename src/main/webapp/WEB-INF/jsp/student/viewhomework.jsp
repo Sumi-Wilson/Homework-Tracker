@@ -16,7 +16,10 @@ function calculateDaysLeft() {
         const daysLeft = Math.round((dueDate.getTime() - today.getTime()) / millisecondsInDay);
 
         const daysLeftElement = row.querySelector('.days-left span');
-        daysLeftElement.textContent = daysLeft;
+        if (!row.classList.contains('done') && daysLeftElement){
+                daysLeftElement.textContent = daysLeft;
+        }
+
 
     });
 }
@@ -91,7 +94,7 @@ window.onload = function(){
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
-                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" data-status="${assignment.status}">
+                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" class="<c:if test='${assignment.status eq "Done"}'>done</c:if>">
 
                      <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
@@ -109,7 +112,6 @@ window.onload = function(){
                            </c:choose>">
                            ${assignment.status}
                      </td>
-
 
                      <td><a href="/student/assignmentEdit/${assignment.id}">Edit</a></td>
 

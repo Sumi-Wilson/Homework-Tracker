@@ -59,15 +59,12 @@ window.onload = calculateDaysLeft;
 
               <c:forEach var="assignment" items="${assignments}">
                  <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" class="<c:if test='${assignment.status eq "Done"}'>done</c:if>">
+
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
                      <td><fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" /></td>
                      <td>${assignment.dueDate}</td>
-                      <!-- Add a conditional check to display or hide the "Days Left" column -->
-
-                         <td class="days-left"> <span></span> </td>
-
-
+                     <td class="days-left"> <span></span> </td>
                       <td style="color:
                        <c:choose>
                          <c:when test="${assignment.status eq 'To Do'}">orange</c:when>
