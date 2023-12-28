@@ -24,11 +24,11 @@
                     <form method="get" action="/notification/messageSubmit">
                        <div class="mt-3">
                             <label for="message" class="form-label">Message</label>
-                               <input type="text" class="form-control" id="message" name="message" value="${form.message}">
+                               <input type="text" class="form-control" id="message" name="message" value="${form.message}" required>
                        </div>
                        <div class="mt-3">
                              <label for="expiryDate" class="form-label">Expiry Date</label>
-                             <input type="date" class="form-control" id="expirydate" name="expiryDate" value="${form.expiryDate}">
+                             <input type="date" class="form-control" id="expirydate" name="expiryDate" value="${form.expiryDate}" required>
                        </div>
                        <button type="submit" class="btn btn-primary mt-4">Send Alert</button>
                     </form>

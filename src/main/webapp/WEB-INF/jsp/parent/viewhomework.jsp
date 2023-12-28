@@ -16,8 +16,9 @@ function calculateDaysLeft() {
         const daysLeft = Math.round((dueDate.getTime() - today.getTime()) / millisecondsInDay);
 
         const daysLeftElement = row.querySelector('.days-left span');
+        if (!row.classList.contains('done') && daysLeftElement){
         daysLeftElement.textContent = daysLeft;
-
+        }
 
     });
 }
@@ -57,14 +58,17 @@ window.onload = calculateDaysLeft;
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
-                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}">
-
+                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" class="<c:if test='${assignment.status eq "Done"}'>done</c:if>">
                      <td>${assignment.course}</td>
                      <td>${assignment.homework}</td>
                      <td><fmt:formatDate value="${assignment.createdDate}" pattern="yyyy-MM-dd" /></td>
                      <td>${assignment.dueDate}</td>
-                     <td class="days-left"> <span></span> </td>
-                     <td style="color:
+                      <!-- Add a conditional check to display or hide the "Days Left" column -->
+
+                         <td class="days-left"> <span></span> </td>
+
+
+                      <td style="color:
                        <c:choose>
                          <c:when test="${assignment.status eq 'To Do'}">orange</c:when>
                          <c:when test="${assignment.status eq 'In-Progress'}">blue</c:when>
