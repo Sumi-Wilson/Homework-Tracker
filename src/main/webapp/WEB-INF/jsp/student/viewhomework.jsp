@@ -20,30 +20,29 @@ function calculateDaysLeft() {
         if (!row.classList.contains('done') && daysLeftElement){
                 daysLeftElement.textContent = daysLeft;
         }
-
-
     });
-}
+ }
 <!-- Selection of Radio Button -->
 function filterAssignments(status) {
     const rows = document.querySelectorAll('tr[data-status]');
-
     rows.forEach(row => {
         const rowStatus = row.getAttribute('data-status');
+        console.log(`Row status: ${rowStatus}`);
         if (status === 'all' || rowStatus === status) {
             row.style.display = 'table-row';
         } else {
             row.style.display = 'none';
         }
     });
+
 }
 
 window.onload = function(){
    calculateDaysLeft();
-
+   filterAssignments('all');
        const radioButtons = document.querySelectorAll('input[name="status"]');
        radioButtons.forEach(button => {
-           button.addEventListener('change', function() {
+               button.addEventListener('change', function() {
                const selectedStatus = this.value;
                filterAssignments(selectedStatus);
            });
@@ -96,7 +95,8 @@ window.onload = function(){
              </tr>
 
               <c:forEach var="assignment" items="${assignments}">
-                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}" class="<c:if test='${assignment.status eq "Done"}'>done</c:if>">
+                 <tr data-due-date="${fn:escapeXml(fn:replace(assignment.dueDate, ' ', 'T'))}"
+                     data-status="${assignment.status}" class="<c:if test='${assignment.status eq "Done"}'>done</c:if>">
 
                      <td>${assignment.id}</td>
                      <td>${assignment.course}</td>
