@@ -1,5 +1,6 @@
 package org.homeworktracker.casestudy.formbean;
 
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -30,6 +31,8 @@ public class RegisterUserFormBean {
     @NotEmpty(message = "Usertype cannot be empty")
     private String userType;
 
-
-
+    @AssertTrue(message = "Password and Confirm Password must match")
+    private boolean isPasswordMatch() {
+        return password != null && password.equals(confirmPassword);
+    }
 }

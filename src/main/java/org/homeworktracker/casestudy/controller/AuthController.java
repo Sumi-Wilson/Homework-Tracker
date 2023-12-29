@@ -62,6 +62,15 @@ public class AuthController {
         }
         log.info("  in Create customer no error found");
 
+        // Check for password matching
+        if (!form.getPassword().equals(form.getConfirmPassword())) {
+            bindingResult.rejectValue("confirmPassword", "error.password.match", "Password and Confirm Password must match");
+            ModelAndView response = new ModelAndView("auth/register");
+            response.addObject("form", form);
+            response.addObject("errors", bindingResult);
+            return response;
+        }
+
         //Check if email exists
         if (userDao.countByEmail(form.getEmail()) > 0) {
             ModelAndView response = new ModelAndView("auth/register");

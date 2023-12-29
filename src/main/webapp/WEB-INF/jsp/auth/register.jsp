@@ -99,6 +99,11 @@
                             </c:forEach>
                         </div>
                     </c:if>
+                    <c:if test="${not empty errors.fieldError}">
+                        <div style="color:red">
+                            Password and Confirm Password must match<br>
+                        </div>
+                    </c:if>
 
                     <div class="mt-1">
                         <label for="agree-terms">
