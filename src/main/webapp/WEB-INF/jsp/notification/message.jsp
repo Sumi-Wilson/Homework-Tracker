@@ -2,7 +2,7 @@
 <jsp:include page="../include/header.jsp"/>
 
     <section>
-        <div class="bg-light2 pt-2 pb-2">
+        <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="m-0">Send Alert</h2>
@@ -11,8 +11,8 @@
         </div>
     </section>
 
-    <section class="pt-2 pb-5">
-        <div class="container" style="height: 62vh;">
+    <section class="pt-4 pb-4">
+        <div class="container" style="height: 65vh;">
             <div class="row justify-content-center">
                 <div class="col-6">
                     <c:if test="${not empty successMessage}">
@@ -21,7 +21,7 @@
                            </div>
                     </c:if>
 
-                    <form method="get" action="/notification/messageSubmit">
+                    <form method="get" action="/notification/messageSubmit" style="padding-bottom: 10px; padding-left: 15px; padding-right: 15px; border: 1px solid #ccc; border-radius: 10px; background-color: #F2FAFF;">
                        <div class="mt-3">
                             <label for="message" class="form-label">Message</label>
                                <input type="text" class="form-control" id="message" name="message" value="${form.message}" required>

@@ -26,7 +26,15 @@ window.onload = calculateDaysLeft;
 </script>
 
 <section>
-    <div style="text-align: right; margin-right: 15px;">
+<div class="bg-light2 pt-0 pb-0" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div><h2 class="m-0">View Homework</h2></div>
+        </div>
+    </div>
+</div>
+
+    <div style="text-align: right; border-radius: 8px; margin-left: 15px; margin-right: 15px;">
         <b>Students: </b>
         <c:forEach var="parentStudent" items="${parentStudents}">
             <a href="/parent/viewhomework?studentId=${parentStudent.student.id}">${parentStudent.student.firstName}</a></tr>&nbsp;
@@ -35,11 +43,7 @@ window.onload = calculateDaysLeft;
 </section>
 
 <section>
-<div class="bg-light2 pt-0 pb-0" style="display: flex; justify-content: space-around;">
-    <div></div>
-    <div><h2 class="m-0">View Homework</h2></div>
-    <div></div>
-</div>
+
 </section>
 
 <section class="bg-light1 pt-4 pb-0" style="height: 70vh;">

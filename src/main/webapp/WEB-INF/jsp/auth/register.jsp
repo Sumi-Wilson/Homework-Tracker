@@ -3,7 +3,7 @@
 <jsp:include page="../include/header.jsp"/>
 
 <section>
-    <div class="bg-light2 pt-1 pb-0">
+    <div class="bg-light2 pt-1 pb-1" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="m-0">Sign Up</h2>
@@ -12,7 +12,7 @@
     </div>
 </section>
 
-<section class="pt-0 pb-0">
+<section class="pt-2 pb-0">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -22,7 +22,7 @@
                      </div>
               </c:if>
                 <!-- the action attribute on the form tag is the URL that the form will submit to when then user clicks the submit button -->
-                <form method="get" action="/auth/registerSubmit">
+                <form method="get" action="/auth/registerSubmit" style="padding-bottom: 10px; padding-left: 15px; padding-right: 15px; border: 1px solid #ccc; border-radius: 10px; background-color: #F2FAFF;">
 
                     <div class="mt-1">
                         <label for="userType" class="form-label">User Type</label>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="../include/header.jsp"/>
 
+<!-- Calculate DaysLeft -->
 <script>
 function calculateDaysLeft() {
     const rows = document.querySelectorAll('tr[data-due-date]');
@@ -23,6 +24,7 @@ function calculateDaysLeft() {
 
     });
 }
+<!-- Selection of Radio Button -->
 function filterAssignments(status) {
     const rows = document.querySelectorAll('tr[data-status]');
 
@@ -71,7 +73,7 @@ window.onload = function(){
                 <input type="radio" name="status" value="all" id="all-radio" checked> All
                 <input type="radio" name="status" value="To Do" id="todo-radio"> To Do
                 <input type="radio" name="status" value="In-Progress" id="inprogress-radio"> In Progress
-                <input type="radio" name="status" value="Overdue" id="done-radio"> Overdue
+                <input type="radio" name="status" value="Overdue" id="overdue-radio"> Overdue
                 <input type="radio" name="status" value="Done" id="done-radio"> Done
         </div>
     </div>

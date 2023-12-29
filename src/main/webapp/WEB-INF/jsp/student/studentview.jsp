@@ -1,9 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../include/header.jsp"/>
 
-
-<!-- ================================================= -->
-
 <section>
     <div class="bg-light2 pt-2 pb-2" style="background-color: #F2FAFF; border: 1px solid #056EB9; border-radius: 15px; width: 97%; margin-left: 15px;">
         <div class="row">
@@ -19,13 +16,11 @@
       <div class="row justify-content-center">
          <div class="col-6">
             <c:if test="${not empty success}">
-                <div class="alert alert-success mt-3" role="alert">
-                     ${success}
-                </div>
+                <div class="alert alert-success mt-1" role="alert"> ${success} </div>
             </c:if>
 
 
-         <form method="get" action="/student/assignmentAdd" style="padding-left:15px; padding-right: 15px; border: 1px solid #ccc; border-radius: 10px; background-color: #F2FAFF;">
+         <form method="get" action="/student/assignmentAdd" style="padding-bottom: 10px; padding-left: 15px; padding-right: 15px; border: 1px solid #ccc; border-radius: 10px; background-color: #F2FAFF;">
 
             <input type="hidden" name ="id" value="${form.id}">
 
@@ -43,7 +38,7 @@
                                 </c:forEach>
                            </div>
                         </c:if>
-                        <br>
+
 
                        <label for="course" class="form-label">Course</label>
                        <select class="form-select"id="course" name="course">
@@ -58,7 +53,7 @@
                                  </c:forEach>
                              </div>
                        </c:if>
-                       <br>
+
                        <label for="homework" class="form-label">Homework</label>
                        <input class="form-control" placeholder="Enter your homework" type="text" id="task" name="homework" value="${form.homework}" required>
 
@@ -69,9 +64,9 @@
                                 </c:forEach>
                             </div>
                        </c:if>
-                       <br>
 
-                       <label for="dueDate" class="form-label">Due Date</label><br>
+
+                       <label for="dueDate" class="form-label">Due Date</label>
                        <input class="form-control" type="date" id="dueDate" name="dueDate" value="${form.dueDate}" required >
                         <c:if test="${errors.hasFieldErrors('dueDate')}">
                             <div style="color:red">
@@ -81,12 +76,13 @@
                             </div>
                        </c:if>
 
-                       <center>
+                       <div class="row justify-content-center pt-1">
+                        <div class="col-4">
                             <button type="submit" class="btn btn-primary mt-4">
                                <b>${empty form.id ? 'Add' : 'Edit'} Homework</b>
                             </button>
-                       </center>
-                       <br>
+                       </div>
+                      </div>
 
                  </div>
          </form>

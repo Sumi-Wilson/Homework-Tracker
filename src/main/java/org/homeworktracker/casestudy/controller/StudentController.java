@@ -59,7 +59,7 @@ public class StudentController {
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         ModelAndView response = new ModelAndView("student/viewhomework");
-        log.info("In student view homework with no args");
+        log.info("In student view homework with  args");
 
         User student = authenticatedUserService.loadCurrentUser();
         Integer studentId = student.getId();
