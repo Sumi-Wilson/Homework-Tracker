@@ -30,7 +30,7 @@
 
                     <div class="mt-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="text" class="form-control" placeholder="Password" id="password" name="password" required>
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-4">Sign In</button>
