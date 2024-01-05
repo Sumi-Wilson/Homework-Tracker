@@ -28,6 +28,8 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .requestMatchers(
                         new AntPathRequestMatcher("/admin/**"),
+                        new AntPathRequestMatcher("/parent/**"),
+                        new AntPathRequestMatcher("/student/**"),
                         new AntPathRequestMatcher("/user/**")).authenticated()
                 .anyRequest().permitAll();
 
