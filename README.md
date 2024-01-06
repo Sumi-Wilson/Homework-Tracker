@@ -26,11 +26,14 @@ Increased Efficiency: Save time and energy by using a streamlined system for man
 **Call to Action:**
 Ready to join the Homework Tracking revolution? Sign up for the system today and experience the difference!
 
-First time user homepage
+**First time user homepage**
 ![img_2.png](img_2.png)
-Logged in as Student
+
+**Logged in as Student**
 ![img_5.png](img_5.png)
-Logged in as Parent
+
+**Logged in as Parent**
 ![img_4.png](img_4.png)
-Logged in as Admin
+
+**Logged in as Admin**
 ![img_3.png](img_3.png)
