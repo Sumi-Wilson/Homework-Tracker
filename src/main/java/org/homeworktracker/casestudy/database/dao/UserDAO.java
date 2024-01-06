@@ -13,7 +13,7 @@ public interface UserDAO extends JpaRepository<User, Long> {
 
     public User findByEmailIgnoreCase(String email);
     @Query("SELECT COUNT(u) FROM User u WHERE u.email = :email")
-    Long countByEmail(@Param("email") String email);
+    Integer countByEmail( String email);
     @Query("SELECT u FROM User u WHERE u.userType = 'Parent' AND (LOWER(u.firstName) LIKE LOWER(:firstName) OR LOWER(u.lastName) LIKE LOWER(:lastName))")
     List<User> findByFirstNameAndLastName( String firstName, String lastName);
 

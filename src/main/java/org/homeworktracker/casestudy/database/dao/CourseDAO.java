@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CourseDAO extends JpaRepository<Course,Long> {
-
-    boolean existsByCourseIgnoreCase(String courseName);
+    boolean existsByCourseIgnoreCase(String CourseName);
     @Transactional
     @Modifying
+    //@Query("DELETE FROM Course c WHERE c.course = :courseName")
     @Query("DELETE FROM Course c WHERE LOWER(c.course) = LOWER(:courseName)")
     void deleteByCourse( String courseName);
     List<Course> findAll();

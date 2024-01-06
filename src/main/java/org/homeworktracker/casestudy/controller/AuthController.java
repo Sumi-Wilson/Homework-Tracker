@@ -104,7 +104,6 @@ public class AuthController {
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/");
 
-        log.info("In create customer with incoming args");
         return response;
 
     }

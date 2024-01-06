@@ -41,6 +41,7 @@ public class ParentController {
         Integer parentId = parent.getId();
         log.info("Parent Id: " + parentId);
 
+        //Finds the list of students associated with the parent
         List<ParentStudent> parentStudents = parentStudentDao.findByParentId(parentId);
         response.addObject("parentStudents", parentStudents);
 
