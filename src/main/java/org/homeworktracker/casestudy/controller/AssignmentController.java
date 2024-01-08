@@ -91,7 +91,7 @@ public class AssignmentController {
 
             response.setViewName("redirect:/student/studentview" + "?success=Homework added successfully");
 
-            // response.addObject("successMessage", "Homework added successfully");
+            response.addObject("successMessage", "Homework added successfully");
         }
         return response;
 

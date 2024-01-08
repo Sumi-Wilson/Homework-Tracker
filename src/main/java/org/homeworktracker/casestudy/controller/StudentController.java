@@ -140,14 +140,17 @@ public class StudentController {
     public ModelAndView addParent(@RequestParam Integer parentId) {
         ModelAndView response = new ModelAndView("student/search");
 
+        //// Find the User (parent) by their ID using the userDao
         User parent = userDao.findById(parentId);
 
+        // Get the currently authenticated user (student)
         User student = authenticatedUserService.loadCurrentUser();
 
+        // Check if the parent is already linked to the student
         if(parentStudentDao.existsByParentAndStudent(parent,student)){
             response.addObject("error", "Parent is already linked to the student");
         }else {
-
+            // If not linked, create a new ParentStudent instance and set the student and parent
             ParentStudent parentStudent = new ParentStudent();
             parentStudent.setStudent(student);
             parentStudent.setParent(parent);
