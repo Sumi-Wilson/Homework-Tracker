@@ -25,15 +25,16 @@
 
                     <div class="mt-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" placeholder="Username" id="username" name="username" required>
+                        <input type="text" class="form-control" placeholder="Email" id="username" name="username" required>
                     </div>
 
                     <div class="mt-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
                     </div>
-
+                    <center>
                     <button type="submit" class="btn btn-primary mt-4">Sign In</button>
+                    </center>
                 </form>
             </div>
         </div>

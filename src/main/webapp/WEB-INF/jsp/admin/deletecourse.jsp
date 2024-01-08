@@ -42,7 +42,7 @@
                               </c:forEach>
                           </div>
                      </c:if>
-                    <div>
+                    <div style="text-align: center;">
                     <button type="submit" class="btn btn-primary mt-4"><b>Delete Course</b></button>
                     </div>
                 </form>

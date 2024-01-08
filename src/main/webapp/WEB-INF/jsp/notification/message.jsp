@@ -30,7 +30,9 @@
                              <label for="expiryDate" class="form-label">Expiry Date</label>
                              <input type="date" class="form-control" id="expirydate" name="expiryDate" value="${form.expiryDate}" required>
                        </div>
+                       <center>
                        <button type="submit" class="btn btn-primary mt-4">Send Alert</button>
+                       </center>
                     </form>
                 </div>
             </div>

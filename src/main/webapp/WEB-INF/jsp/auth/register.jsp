@@ -112,8 +112,9 @@
                         <a href="/terms-of-use"> Terms and Conditions</a>
                         </label>
                     </div>
-
+                    <center>
                     <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+                    </center>
                 </form>
             </div>
         </div>

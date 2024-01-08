@@ -27,8 +27,8 @@ vertical-align: middle;
 </p>
 
 	</div>
-	<div style="width: 36vw; height: 70vh; text-align: right; padding-top: 100px;"><img src="../pub/images/tracker.jpg" height=280px width=400px></div>
-</div>
+	<div style="width: 36vw; height: 70vh; text-align: right; padding-top: 100px;"><img src="../pub/images/tracker.jpg" height="280px" width="400px"></div>
+    </div>
 <!-- ========================================= -->
 
     </div>
